@@ -1,0 +1,253 @@
+
+- platform: template
+  sensors:
+    homeaveragetemp:
+      friendly_name: "Home Average Temperature"
+      unit_of_measurement: °C
+      value_template: "{{ ((
+        states('sensor.tempandrew_temperature') | float + 
+        states('sensor.tempbrian_temperature') | float + 
+        states('sensor.tempmumbedroom_temperature') | float + 
+        states('sensor.templivingroom_temperature') | float + 
+        states('sensor.tempkitchen_temperature') | float + 
+        states('sensor.bathroom_temperature') | float + 
+        states('sensor.temploft_temperature') | float
+       
+        ) / 7) | round(2) }}"
+      
+- platform: template
+  sensors:
+    networkupspowerwatts:
+      friendly_name: "Network UPS Power Watts"
+      value_template: "{{ ((states('sensor.ups_nominal_output_power') | float) / (states('sensor.ups_load') | float))  | round(2) }}"
+      unit_of_measurement: W
+    
+- platform: template
+  sensors:
+    nasupspowerwatts:
+      friendly_name: "NAS UPS Power Watts"
+      value_template: "{{ ((states('sensor.ups_load_2') | float) / 100 * 210)  | round(2) }}"
+      unit_of_measurement: W    
+
+- platform: template
+  sensors:
+    gardenbatterylevel:
+      friendly_name: "Garden Temp Battery Voltage"
+      value_template: "{{ states.sensor.garden_temp_battery.state}}"
+      icon_template: >-
+        {% if states('sensor.garden_temp_battery')|float >= 2.5 %}
+        mdi:battery
+        {% else %}                                
+        mdi:battery-low
+        {% endif %}
+    
+    
+- platform: template
+  sensors:
+    energy_mainswatts:
+      value_template: "{{ ((states('sensor.mains_current') | float) * (states('sensor.networkcupboard_voltage') | float) )}}"
+      unit_of_measurement: "W"
+      friendly_name: "Mains Electricity Watts"
+      
+- platform: template
+  sensors:
+    energy_consumption:
+      value_template: "{{ ((states('sensor.electric_meter') | float) / 1000)  | round(3) }}"
+      unit_of_measurement: "kWh"
+      friendly_name: "Incoming Electricity"
+      attribute_templates:
+        state_class: total_increasing
+        device_class: energy
+- platform: template
+  sensors:
+    energy_solar_pv_in:
+      value_template: "{{ (states('sensor.solarpv_totalgenerated') | float)}}"
+      unit_of_measurement: "kWh"
+      friendly_name: "Incoming SolarPV"
+      attribute_templates:
+        state_class: total_increasing
+        device_class: energy
+
+- platform: template
+  sensors:  
+    main_meter_energy_today:
+      device_class: energy
+      friendly_name: "Energy Imported Today"
+      attribute_templates:
+        state_class: total_increasing
+        device_class: energy
+      unit_of_measurement: 'kWh'
+      value_template: "{{ ((states('sensor.electric_meter') | float) / 1000)  | round(3) }}"
+      icon_template: mdi:mdi-current-ac
+    
+- platform: template
+  sensors:  
+    main_livingroomtv_energy:
+      device_class: energy
+      friendly_name: "Energy Living Room TV"
+      attribute_templates:
+        state_class: total_increasing
+        device_class: energy
+      unit_of_measurement: 'kWh'
+      value_template: "{{ states('sensor.powerlivingroomtvsocket_energy') }}"
+      icon_template: mdi:mdi-current-ac
+ 
+- platform: template
+  sensors:  
+    main_andrewtv_energy:
+      device_class: energy
+      friendly_name: "Energy Andrew TV - PC"
+      attribute_templates:
+        state_class: total_increasing
+        device_class: energy
+      unit_of_measurement: 'kWh'
+      value_template: "{{ states('sensor.powerandpctv_energy') }}"
+      icon_template: mdi:mdi-current-ac
+
+- platform: template
+  sensors:  
+    main_briantv_energy:
+      device_class: energy
+      friendly_name: "Energy Brian TV"
+      attribute_templates:
+        state_class: total_increasing
+        device_class: energy
+      unit_of_measurement: 'kWh'
+      value_template: "{{ states('sensor.powerbriantv_energy') }}"
+      icon_template: mdi:mdi-current-ac
+- platform: template
+  sensors:  
+    main_brianpc_energy:
+      device_class: energy
+      friendly_name: "Energy Brian PC"
+      attribute_templates:
+        state_class: total_increasing
+        device_class: energy
+      unit_of_measurement: 'kWh'
+      value_template: "{{ states('sensor.smartplugbrianpc_total_consumption') }}"
+      icon_template: mdi:mdi-current-ac
+- platform: template
+  sensors:  
+    main_networkcupboard_energy:
+      device_class: energy
+      friendly_name: "Energy Network Cupboard"
+      attribute_templates:
+        state_class: total_increasing
+        device_class: energy
+      unit_of_measurement: 'kWh'
+      value_template: "{{ states('sensor.networkcupboard_total_consumption') }}"
+      icon_template: mdi:mdi-current-ac     
+
+- platform: template
+  sensors:  
+    main_washingmachine_energy:
+      device_class: energy
+      friendly_name: "Energy Washing Machine"
+      attribute_templates:
+        state_class: total_increasing
+        device_class: energy
+      unit_of_measurement: 'kWh'
+      value_template: "{{ states('sensor.washing_machine_total_power') }}"
+      icon_template: mdi:mdi-current-ac
+    
+#    
+#- platform: template
+#  sensors:
+#    my_tp_switch_amps:
+#      friendly_name_template: "Network Cupboard Current"
+#      value_template: '{% if states.switch.networkcupboard.state %}{{ states.switch.networkcupboard.attributes["current_a"] | float }}{% endif %}'
+#      unit_of_measurement: 'A'
+#    my_tp_switch_watts:
+#      friendly_name_template: "Network Cupboard Current Consumption"
+#      value_template: '{% if states.switch.networkcupboard.state %}{{ states.switch.networkcupboard.attributes["current_power_w"] | float }}{% endif %}'
+#      unit_of_measurement: 'W'
+#    my_tp_switch_total_kwh:
+#     friendly_name_template: "Network Cupboard Total Consumption"
+#      value_template: '{% if states.switch.networkcupboard.state %}{{ state_attr('switch.networkcupboard','total_energy_kwh') | float | round(0) }}{% endif %}'
+#      unit_of_measurement: 'kWh'
+#    my_tp_switch_volts:
+#     friendly_name_template: "Network Cupboard Voltage"
+#      value_template: '{% if states.switch.networkcupboard.state %}{{ states.switch.networkcupboard.attributes["voltage"] | float }}{% endif %}'
+#      unit_of_measurement: 'V'
+#    my_tp_switch_today_kwh:
+#      friendly_name_template: "Network Cupboard Today's Consumption"
+#      value_template: '{% if states.switch.networkcupboard.state %}{{ states.switch.networkcupboard.attributes["today_energy_kwh"] | float }}{% endif %}'
+#      unit_of_measurement: 'kWh'
+      
+
+- platform: template
+  sensors:
+    electrictokwh:
+     value_template: "{{ states('sensor.electric_meter') | float / 1000 }}"
+     unit_of_measurement: KWh
+     device_class: energy
+     
+     
+- platform: template
+  sensors:
+    gastocubicmeter:
+      value_template: "{{ states('sensor.gas_meter') | float / 100 }}"
+      unit_of_measurement: m³
+      device_class: gas
+      attribute_templates:
+        state_class: total_increasing
+        
+- platform: template
+  sensors:
+    energy_gas_in:
+      value_template: "{{ (states('sensor.gastocubicmeter') | float)}}"
+      unit_of_measurement: "kWh"
+      friendly_name: "Incoming Gas"
+      attribute_templates:
+        state_class: total_increasing
+        device_class: energy        
+- platform: template
+  sensors:
+    metered_devices_power:
+      friendly_name: "Metered Devices"
+      unit_of_measurement: 'W'
+      icon_template: mdi:speedometer
+      value_template: "{{ (states('sensor.nasupspowerwatts') | float + 
+            states('sensor.powerandpctv_power') | float +
+            states('sensor.powerlivingroomtvsocket_power') | float + 
+            states('sensor.powerbriantv_power') | float + 
+            states('sensor.nasupspowerwatts') | float + 
+            states('sensor.smartplugbrianpc_current_consumption') | float +
+            states('sensor.ovenandpump_power') | float +
+            states('sensor.workbench_power') | float +
+      states('sensor.washing_machine_power') | float) | round(2) }}" 
+    
+- platform: template
+  sensors:
+    unmetered_devices_power:
+      friendly_name: "Unmetered Devices"
+      unit_of_measurement: 'W'
+      icon_template: mdi:speedometer
+      value_template: "{{ ((states('sensor.energy_mainswatts') | float + states('sensor.solarpv_gridpower') | float) -
+            states('sensor.metered_devices_power') | float) | round(2) }}" 
+
+ 
+
+- platform: template
+  sensors:  
+    energy_shelly_workbench:
+      device_class: energy
+      friendly_name: "Energy Shelly Loft Workbench"
+      attribute_templates:
+        state_class: total_increasing
+        device_class: energy
+      unit_of_measurement: 'kWh'
+      value_template: "{{ states('sensor.workbench_energy') }}"
+      icon_template: mdi:mdi-current-ac
+      
+- platform: template
+  sensors:  
+    energy_shelly_oven:
+      device_class: energy
+      friendly_name: "Energy Shelly Loft Oven"
+      attribute_templates:
+        state_class: total_increasing
+        device_class: energy
+      unit_of_measurement: 'kWh'
+      value_template: "{{ states('sensor.ovenandpump_energy') }}"
+      icon_template: mdi:mdi-current-ac      

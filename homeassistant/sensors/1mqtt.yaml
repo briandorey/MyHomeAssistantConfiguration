@@ -1,0 +1,108 @@
+- platform: mqtt
+  state_topic: "/home/devices/washingmachine/SENSOR"
+  name: 'Washing Machine Reactive Power'
+  unit_of_measurement: 'VA'
+  value_template: "{{ value_json.ENERGY.ReactivePower }}"
+- platform: mqtt
+  state_topic: "/home/devices/washingmachine/SENSOR"
+  name: 'Washing Machine Total Power'
+  unit_of_measurement: 'kwh'
+  value_template: "{{ value_json.ENERGY.Total }}"
+- platform: mqtt
+  state_topic: "/home/devices/washingmachine/SENSOR"
+  name: 'Washing Machine Today Power'
+  unit_of_measurement: 'kwh'
+  value_template: "{{ value_json.ENERGY.Today }}"
+- platform: mqtt
+  state_topic: "/home/devices/washingmachine/SENSOR"
+  name: 'Washing Machine Power'
+  value_template: "{{ value_json.ENERGY.Power }}"
+  unit_of_measurement: 'W'
+- platform: mqtt
+  state_topic: "/home/devices/washingmachine/SENSOR"
+  name: 'Washing Machine Current'
+  unit_of_measurement: 'A'
+  value_template: "{{ value_json.ENERGY.Current }}"
+
+- platform: mqtt
+  state_topic: "/home/power/maxmainscurrent"
+  name: "Mains Current"
+  unit_of_measurement: A
+
+- platform: mqtt
+  state_topic: "/home/power/gasmeter"
+  name: "Gas Meter"
+  scan_interval: 120
+  
+- platform: mqtt
+  state_topic: "/home/power/electricmeter"
+  name: Electric Meter
+  scan_interval: 120
+  
+  
+- platform: mqtt
+  state_topic: "/home/water/cylinderbase"
+  value_template: "{{ value | round(1) }}"
+  name: "Hot Water Base"
+  unit_of_measurement: °C
+  scan_interval: 300
+  
+- platform: mqtt
+  state_topic: "/home/water/cylindertop"
+  value_template: "{{ value | round(1) }}"
+  name: "Hot Water Top"
+  unit_of_measurement: °C
+  scan_interval: 120
+  
+- platform: mqtt
+  state_topic: "/home/bathroom/temperature"
+  value_template: "{{ value | round(1) }}"
+  name: "Bathroom Temperature"
+  unit_of_measurement: °C
+  scan_interval: 300
+
+- platform: mqtt
+  state_topic: "/home/water/solarcollector"
+  value_template: "{{ value | round(1) }}"
+  name: "Solar Water Panel"
+  unit_of_measurement: °C
+  scan_interval: 60
+    
+- platform: mqtt
+  state_topic: "/home/loft/temperature"
+  value_template: >
+    {{ value if value is defined else 0 }}
+  name: "Loft Temperature"
+  unit_of_measurement: °C
+  scan_interval: 300
+  
+
+  
+- platform: mqtt
+  state_topic: "/home/solarpv/pvvolt"
+  name: "SolarPV Panel Volts"
+  unit_of_measurement: V  
+  scan_interval: 30
+  
+- platform: mqtt
+  state_topic: "/home/solarpv/pvamp"
+  name: "SolarPV Panel Amps"
+  unit_of_measurement: A
+  scan_interval: 30
+  
+- platform: mqtt
+  state_topic: "/home/solarpv/gridpower"
+  name: "SolarPV GridPower"
+  unit_of_measurement: W
+  scan_interval: 20
+- platform: mqtt
+  state_topic: "/home/solarpv/totalpower"
+  name: "SolarPV TotalGenerated"
+  unit_of_measurement: Kwh 
+  scan_interval: 30
+- platform: mqtt
+  state_topic: "/home/solarpv/devicetemp"
+  name: "SolarPV Inverter Temp"
+  unit_of_measurement: C 
+  scan_interval: 30
+  

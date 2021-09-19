@@ -1,0 +1,16 @@
+- platform: template
+  sensors:
+    dryer_status:
+      friendly_name: "Washing Machine"
+      delay_on:
+        minutes: 2
+      delay_off:
+        minutes: 6
+      value_template: >-
+        {{ states('sensor.washing_machine_power')|float > 25 }}
+      icon_template: mdi:tumble-dryer
+- platform: mqtt
+  state_topic: "/home/water/solarpump"
+  name: "Solar Water Pump"
+  payload_on: "1"
+  payload_off: "0"

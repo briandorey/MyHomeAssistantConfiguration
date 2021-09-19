@@ -1,0 +1,32 @@
+
+homeassistant/.storage/auth_provider.homeassistant
+homeassistant/.storage/core.config_entries
+homeassistant/.storage/core.device_registry
+homeassistant/.storage/core.entity_registry
+homeassistant/.storage/core.restore_state
+homeassistant/.storage/core.uuid
+homeassistant/.storage/hassio
+homeassistant/.storage/mobile_app
+homeassistant/.storage/person
+homeassistant/.storage/smartthings
+homeassistant/secrets.yaml
+
+homeassistant/known_devices.yaml
+
+# Generic ignores
+*.log
+*.db
+*.db-shm
+*.db-wal
+*.pyc
+._*
+__pycache__
+
+# Directory (contents) ignores
+homeassistant/.cloud
+homeassistant/.vscode
+homeassistant/deps
+.vscode
+homeassistant/home-assistant.log.1
+homeassistant/www/entity_log.txt
+homeassistant/www/export.csv

@@ -1,0 +1,26 @@
+- alias: Low Temp Alert Water Tank Area
+  description: ''
+  trigger:
+    - minutes: /30
+      platform: time_pattern
+  condition:
+    - condition: numeric_state
+      entity_id: sensor.temploftwater_temperature
+      below: '10'
+  action:
+    - service: notify.mobile_app_brians_ipad_pro
+      data:
+        message: Low air temperature in the loft water tank {{states.sensor.temploftwater_temperature.state }} c
+    - service: notify.mobile_app_brian_iphone
+      data:
+        message: Low air temperature in the loft water tank  {{states.sensor.temploftwater_temperature.state }} c
+        title: Low air temperature in the loft water tank  {{states.sensor.temploftwater_temperature.state }} c
+    - service: notify.mobile_app_brians_ipad_pro
+      data:
+        message: Low air temperature in the loft water tank  {{states.sensor.temploftwater_temperature.state }} c
+        title: Low air temperature in the loft water tank  {{states.sensor.temploftwater_temperature.state }} c
+    - service: notify.mobile_app_andrews_iphone
+      data:
+        message: Low air temperature in the loft water tank  {{states.sensor.temploftwater_temperature.state }} c
+        title: Low air temperature in the loft water tank {{states.sensor.temploftwater_temperature.state }} c
+  mode: single

@@ -1,0 +1,65 @@
+sonos_say:
+  alias: Sonos TTS script
+  sequence:
+  - service: sonos.snapshot
+    data:
+      entity_id: media_player.{{ sonosdevice }}
+  - service: sonos.unjoin
+    data:
+      entity_id: media_player.{{ sonosdevice }}
+  - service: media_player.volume_set
+    data:
+      entity_id: media_player.{{ sonosdevice }}
+      volume_level: 0.3
+  - service: tts.google_translate_say
+    data:
+      entity_id: media_player.{{ sonosdevice }}
+      message: '{{ message }}'
+      cache: false
+  - delay:
+      seconds: 1
+  - delay: "{% set duration = states.media_player[sonosdevice].attributes.media_duration\
+      \ %} {% if duration > 0 %}\n  {% set duration = duration - 1 %}\n{% endif %}\
+      \ {% set seconds = duration % 60 %} {% set minutes = (duration / 60)|int % 60\
+      \ %} {% set hours = (duration / 3600)|int %} {{ [hours, minutes, seconds]|join(':')\
+      \ }}"
+  - service: sonos.restore
+    data:
+      entity_id: media_player.{{ sonosdevice }}
+  mode: single
+scriptwashingmachinecomplete:
+  alias: ScriptWashingMachineComplete
+  sequence:
+  - service: sonos.snapshot
+    data:
+      entity_id: media_player.living_room
+  - service: media_player.volume_set
+    data:
+      volume_level: 0.3
+    target:
+      entity_id: media_player.living_room
+  - service: media_player.play_media
+    target:
+      entity_id: media_player.living_room
+    data:
+      media_content_type: music
+      media_content_id: !secret mediawashingalert
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 10
+      milliseconds: 0
+  - service: sonos.restore
+    data:
+      entity_id: media_player.living_room
+  mode: single
+  
+print_entities_to_file:
+  alias: 'Print Entities To File'
+  sequence:
+  - service: notify.entity_log
+    data_template:
+      message: >
+        {% for state in states %}
+          - {{- state.entity_id -}}
+        {% endfor %}

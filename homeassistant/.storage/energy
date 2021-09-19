@@ -1,0 +1,63 @@
+{
+    "version": 1,
+    "key": "energy",
+    "data": {
+        "energy_sources": [
+            {
+                "type": "grid",
+                "flow_from": [
+                    {
+                        "stat_energy_from": "sensor.energy_consumption",
+                        "stat_cost": null,
+                        "entity_energy_from": "sensor.energy_consumption",
+                        "entity_energy_price": null,
+                        "number_energy_price": 0.18832
+                    }
+                ],
+                "flow_to": [],
+                "cost_adjustment_day": 0.0
+            },
+            {
+                "type": "solar",
+                "stat_energy_from": "sensor.energy_solar_pv_in",
+                "config_entry_solar_forecast": [
+                    "7fe273d41cbcf96be72b1b799d17813b"
+                ]
+            },
+            {
+                "type": "gas",
+                "stat_energy_from": "sensor.gastocubicmeter",
+                "stat_cost": null,
+                "entity_energy_from": "sensor.gastocubicmeter",
+                "entity_energy_price": null,
+                "number_energy_price": 0.39
+            }
+        ],
+        "device_consumption": [
+            {
+                "stat_consumption": "sensor.main_livingroomtv_energy"
+            },
+            {
+                "stat_consumption": "sensor.main_andrewtv_energy"
+            },
+            {
+                "stat_consumption": "sensor.main_brianpc_energy"
+            },
+            {
+                "stat_consumption": "sensor.main_briantv_energy"
+            },
+            {
+                "stat_consumption": "sensor.main_networkcupboard_energy"
+            },
+            {
+                "stat_consumption": "sensor.main_washingmachine_energy"
+            },
+            {
+                "stat_consumption": "sensor.energy_shelly_workbench"
+            },
+            {
+                "stat_consumption": "sensor.energy_shelly_oven"
+            }
+        ]
+    }
+}

@@ -1,0 +1,256 @@
+homeassistant:
+  customize: !include customize.yaml
+  customize_glob: !include customize_glob.yaml
+# Configure a default setup of Home Assistant (frontend, api, etc)
+# ssdp:
+
+frontend:
+  themes: 
+    cold:
+      primary-text-color: '#447ebc'
+      label-badge-red: '#447ebc'
+    comfortable:
+      primary-text-color: '#629e51'
+      label-badge-red: '#629e51'
+    hot:
+      primary-text-color: '#bf1b00'
+      label-badge-red: '#bf1b00'
+default_config:
+
+    
+mqtt:
+  discovery: true
+  broker: !secret mqttbroker
+  # birth_message and will_message is not required anymore for Home Assistant 0.113 >=
+  birth_message:
+    topic: 'homeassistant/status'
+    payload: 'online'
+  will_message:
+    topic: 'homeassistant/status'
+    payload: 'offline'
+http:
+  server_port: 8123
+
+# Text to speech
+tts:
+  - platform: google_translate
+    cache: true
+    cache_dir: /config/tts
+    time_memory: 300
+    base_url: !secret ttsbaseurl
+    service_name: google_say
+# Example configuration.yaml entry with manually specified Sonos IP addresses
+sonos:
+  media_player:
+    advertise_addr: !secret sonosadvertiseaddr
+    hosts:
+      - !secret sonosplayer1
+      - !secret sonosplayer2
+      - !secret sonosplayer3
+      - !secret sonosplayer4
+      
+group: !include groups.yaml
+
+automation manual: !include_dir_merge_list automations/
+automation ui: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+sensor: !include_dir_merge_list sensors/
+utility_meter: !include utility_meter.yaml
+binary_sensor:  !include binarysensor.yaml  
+
+discovery:
+tplink:
+  discovery: true
+  switch:
+    - host: !secret tplinkswitch1
+    - host: !secret tplinkswitch2
+    
+wake_on_lan:
+
+recorder:
+  db_url: !secret databaseurl 
+  commit_interval: 1
+  auto_purge: true
+  purge_keep_days: 365
+  exclude:
+    event_types:
+      - service_removed
+      - service_executed
+      - platform_discovered
+      - homeassistant_start
+      - homeassistant_stop      
+      - feedreader
+      - service_registered
+      - call_service
+      - component_loaded
+      - logbook_entry
+      - system_log_event
+      - automation_triggered
+      - script_started
+      - timer_out_of_sync
+  include:
+    entities:
+      - binary_sensor.backdoor_contact
+      - binary_sensor.dryer_status
+      - binary_sensor.frontdoor_contact
+      - binary_sensor.loft_window_one_contact
+      - binary_sensor.loftwindowright_contact
+      - binary_sensor.solar_water_pump
+      - sensor.back_door_open_today
+      - sensor.backdoor_temperature
+      - sensor.bathroom_temperature
+      - sensor.frontdoor_temperature
+      - sensor.electric_meter
+      - sensor.electrictokwh
+      - sensor.energy_consumption_cost
+      - sensor.energy_consumption
+      - sensor.energy_electric_total_usage_daily_peak
+      - sensor.energy_electric_total_usage_hourly_peak
+      - sensor.energy_electric_total_usage_monthly_peak
+      - sensor.energy_gas_total_usage_daily_peak
+      - sensor.energy_gas_total_usage_hourly_peak
+      - sensor.energy_gas_total_usage_monthly_peak
+      - sensor.energy_loftoven_usage_daily_peak
+      - sensor.energy_loftoven_usage_monthly_peak
+      - sensor.energy_loftworkbench_usage_daily_peak
+      - sensor.energy_loftworkbench_usage_monthly_peak
+      - sensor.energy_mainswatts
+      - sensor.energy_shelly_oven
+      - sensor.energy_shelly_workbench
+      - sensor.energy_solar_pv_in
+      - sensor.energy_solarpv_total_usage_daily_peak
+      - sensor.energy_solarpv_total_usage_hourly_peak
+      - sensor.energy_solarpv_total_usage_monthly_peak
+      - sensor.energy_spent
+      - sensor.energyusageandrewtv
+      - sensor.front_door_open_today
+      - sensor.smartplugbrianpc_today_s_consumption
+      - sensor.gas_meter
+      - sensor.gastocubicmeter
+      - sensor.hallway_humidity
+      - sensor.hallway_pressure
+      - sensor.hallway_temperature
+      - sensor.homeaveragetemp
+      - sensor.hot_water_base
+      - sensor.hot_water_top
+      - sensor.loft_shelly_oven_total
+      - sensor.loft_shelly_workbench_total
+      - sensor.loft_temperature
+      - sensor.main_andrewtv_energy
+      - sensor.main_brianpc_energy
+      - sensor.main_briantv_energy
+      - sensor.main_livingroomtv_energy
+      - sensor.main_meter_energy_today
+      - sensor.main_networkcupboard_energy
+      - sensor.main_washingmachine_energy
+      - sensor.mains_current
+      - sensor.metered_devices_power
+      - sensor.my_tp_switch_amps
+      - sensor.my_tp_switch_today_kwh
+      - sensor.my_tp_switch_total_kwh
+      - sensor.my_tp_switch_watts
+      - sensor.nasupspowerwatts
+      - sensor.networkcupboard_current
+      - sensor.networkcupboard_current_consumption
+      - sensor.networkcupboard_today_s_consumption
+      - sensor.networkcupboard_total_consumption
+      - sensor.networkcupboard_voltage
+      - sensor.networkupspowerwatts
+      - sensor.powerlivingroomtvsocket_energy
+      - sensor.powerandpctv_energy
+      - sensor.powerandpctv_power
+      - sensor.powerbriantv_energy
+      - sensor.powerbriantv_power
+      - sensor.powerlivingroomtvsocket_energy
+      - sensor.powerlivingroomtvsocket_power
+      - sensor.shelly_loft_ovenandpump_current_draw
+      - sensor.shelly_loft_ovenandpump_real_power
+      - sensor.shelly_loft_workbench_current_draw
+      - sensor.shelly_loft_workbench_real_power
+      - sensor.smartplugbrianpc_current
+      - sensor.smartplugbrianpc_current_consumption
+      - sensor.smartplugbrianpc_today_s_consumption
+      - sensor.smartplugbrianpc_total_consumption
+      - sensor.solar_pump_running_today
+      - sensor.solar_water_panel
+      - sensor.solarpv_gridpower
+      - sensor.solarpv_panel_amps
+      - sensor.solarpv_panel_volts
+      - sensor.solarpv_totalgenerated
+      - sensor.tempandrew_temperature
+      - sensor.tempbrian_temperature
+      - sensor.tempkitchen_temperature
+      - sensor.templivingroom_temperature
+      - sensor.temploft_temperature
+      - sensor.tempmumbedroom_temperature
+      - sensor.tempnetworkcupboard_temperature
+      - sensor.tempoutdoorwindow_humidity
+      - sensor.tempoutdoorwindow_temperature
+      - sensor.unmetered_devices_power
+      - sensor.ups_load
+      - sensor.ups_load_2
+      - sensor.washing_machine_current
+      - sensor.washing_machine_power
+      - sensor.washing_machine_today_power
+      - sensor.washing_machine_total_power
+      - utility_meter.energy_electric_total_usage_daily
+      - utility_meter.energy_electric_total_usage_hourly
+      - utility_meter.energy_electric_total_usage_monthly
+      - utility_meter.energy_gas_total_usage_daily
+      - utility_meter.energy_gas_total_usage_hourly
+      - utility_meter.energy_gas_total_usage_monthly
+      - utility_meter.energy_loftoven_usage_daily
+      - utility_meter.energy_loftoven_usage_monthly
+      - utility_meter.energy_loftworkbench_usage_daily
+      - utility_meter.energy_loftworkbench_usage_monthly
+      - utility_meter.energy_solarpv_total_usage_daily
+      - utility_meter.energy_solarpv_total_usage_hourly
+      - utility_meter.energy_solarpv_total_usage_monthly
+      - utility_meter.energy_electric_total_usage_yearly
+      - utility_meter.energy_electric_total_usage_weekly
+      - utility_meter.energy_gas_total_usage_weekly
+      - utility_meter.energy_gas_total_usage_yearly
+      - utility_meter.energy_solarpv_total_usage_yearly
+      - sensor.temploftwater_temperature
+      - sensor.temploftwater_humidity
+      - binary_sensor.switchlofthatch_contact
+      - sensor.ovenandpump_energy
+      - sensor.workbench_energy
+      - sensor.ovenandpump_power
+      - sensor.workbench_power
+      - sensor.processor_use_percent
+      - sensor.load_5m
+apcupsd:
+  host: !secret apcupsd
+  port: 3551
+  
+
+
+notify:
+  - name: NOTIFIER_NAME
+    platform: smtp
+    server: smtp.gmail.com
+    port: 587
+    timeout: 15
+    sender: !secret emailaddress 
+    encryption: starttls
+    username: !secret emailaddress 
+    password: !secret emailpassword 
+    recipient:
+      - !secret emailaddress 
+    sender_name: My Home Assistant
+  - platform: file
+    name: entity_log
+    filename: /config/www/entity_log.txt
+    timestamp: false
+stream:
+camera:
+  - platform: generic
+    still_image_url: !secret cameraurl
+    stream_source: !secret camerasource
+    name: CAMERA_NAME
+    verify_ssl: false
+    authentication: basic
+    username: !secret camerausername
+    password: !secret camerapassword

@@ -1,0 +1,239 @@
+- id: '1601929435464'
+  alias: UPS Low Voltage Alert
+  description: ''
+  trigger:
+  - type: value
+    platform: device
+    device_id: 6fe6cf33031e11eb9800f10bfc3ec657
+    entity_id: sensor.ups_input_voltage
+    domain: sensor
+    below: 235
+  condition: []
+  action:
+  - service: notify.mobile_app_brians_ipad_pro
+    data:
+      message: UPS Low Voltage
+      title: UPS Low Voltage
+  mode: single
+- id: '1602330194886'
+  alias: Synology High Temp
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: sensor.synology_temperature
+    to: '70'
+  condition: []
+  action:
+  - service: script.sonos_say
+    data:
+      sonosdevice: brian_sonos
+      message: Diskstation in the shed is too hot
+  - service: notify.mobile_app_brians_ipad_pro
+    data:
+      message: Diskstation in the shed is too hot
+      title: Diskstation in the shed is too hot
+  - service: notify.mobile_app_brian_iphone
+    data:
+      message: Diskstation in the shed is too hot
+      title: Diskstation in the shed is too hot
+  mode: single
+- id: '1602798010412'
+  alias: Daily Email
+  description: ''
+  trigger:
+  - platform: time
+    at: '23:30'
+  condition: []
+  action:
+  - service: notify.NOTIFIER_NAME
+    data:
+      title: Home Assistant Daily Update
+      message: Solar Pump {{ states('sensor.solar_pump_running_today') }} {{ '\n'
+        -}} Front Door {{ states('sensor.front_door_open_today') }} {{ '\n' -}} Back
+        Door {{ states('sensor.back_door_open_today') }}{{ '\n' -}}
+  mode: single
+- id: '1621608823509'
+  alias: Brian TV On
+  description: ''
+  trigger:
+  - platform: time
+    at: 08:00
+  condition: []
+  action:
+  - type: turn_on
+    device_id: 5802bfd520fa5234fe77a926d7ae75c4
+    entity_id: switch.powerbriantv
+    domain: switch
+  mode: single
+- id: '1621609091966'
+  alias: Brian TV Off
+  description: ''
+  trigger:
+  - platform: time
+    at: '10:00'
+  condition: []
+  action:
+  - type: turn_off
+    device_id: 5802bfd520fa5234fe77a926d7ae75c4
+    entity_id: switch.powerbriantv
+    domain: switch
+  mode: single
+- id: '1621613040214'
+  alias: Living Room TV Off
+  description: ''
+  trigger:
+  - platform: time
+    at: '22:30'
+  condition: []
+  action:
+  - type: turn_off
+    device_id: 0bb1fdfc6c8d737c2081bd5063c13c65
+    entity_id: switch.powerlivingroomtvsocket
+    domain: switch
+  mode: single
+- id: '1621613084587'
+  alias: Living Room TV On
+  description: ''
+  trigger:
+  - platform: time
+    at: 08:30
+  condition: []
+  action:
+  - type: turn_on
+    device_id: 0bb1fdfc6c8d737c2081bd5063c13c65
+    entity_id: switch.powerlivingroomtvsocket
+    domain: switch
+  mode: single
+- id: '1621802391556'
+  alias: Sonoffbuttonbriantv
+  description: ''
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: 63232c0f155c11ebbd89b9aff7311c53
+    type: action
+    subtype: single
+    discovery_id: 0x00124b0022293551 action_single
+  condition: []
+  action:
+  - type: toggle
+    device_id: 5802bfd520fa5234fe77a926d7ae75c4
+    entity_id: switch.powerbriantv
+    domain: switch
+  mode: single
+- id: '1623689339982'
+  alias: Loft Windows Night Check
+  description: ''
+  trigger:
+  - platform: time
+    at: '20:30'
+  condition:
+  - condition: or
+    conditions:
+    - condition: state
+      entity_id: binary_sensor.loft_window_one_contact
+      state: 'on'
+    - condition: state
+      entity_id: binary_sensor.loftwindowright_contact
+      state: 'on'
+  action:
+  - service: notify.mobile_app_brian_iphone
+    data:
+      message: Loft Window is open
+      title: Loft Window Alert
+  - service: notify.mobile_app_brians_ipad_pro
+    data:
+      message: Loft Window is open
+      title: Loft Window Alert
+  - service: notify.mobile_app_andrews_iphone
+    data:
+      message: Loft Window is open
+      title: Loft Window Alert
+  mode: single
+- id: '1628954369857'
+  alias: Washing Machine Cycle finished
+  description: ''
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.washing_machine_power
+    above: 10
+  condition: []
+  action:
+  - wait_for_trigger:
+    - platform: numeric_state
+      entity_id: sensor.washing_machine_power
+      below: 5
+      for: 00:02:00
+    continue_on_timeout: false
+  - service: notify.mobile_app_brian_iphone
+    data:
+      message: Alert! The washing machine has finished, please remove the clothes
+        from the washing machine
+  - service: notify.mobile_app_lindas_ipad
+    data:
+      message: Alert! The washing machine has finished, please remove the clothes
+        from the washing machine
+      data:
+        push:
+          sound: Update.caf
+  - service: notify.mobile_app_geoffs_ipad
+    data:
+      message: Alert! The washing machine has finished, please remove the clothes
+        from the washing machine
+      data:
+        push:
+          sound: Update.caf
+  - service: script.scriptwashingmachinecomplete
+  mode: single
+- id: '1630839496641'
+  alias: Loft TRV Set Hatch Open
+  description: ''
+  trigger:
+  - type: opened
+    platform: device
+    device_id: e877dc500f9f404ccb4f1687ba2d9c5b
+    entity_id: binary_sensor.switchlofthatch_contact
+    domain: binary_sensor
+  condition: []
+  action:
+  - service: climate.set_temperature
+    target:
+      entity_id: climate.trv_roof
+    data:
+      temperature: 20
+  mode: single
+- id: '1630839573908'
+  alias: Loft TRV Set Hatch Closed
+  description: ''
+  trigger:
+  - type: not_opened
+    platform: device
+    device_id: e877dc500f9f404ccb4f1687ba2d9c5b
+    entity_id: binary_sensor.switchlofthatch_contact
+    domain: binary_sensor
+  condition: []
+  action:
+  - service: climate.set_temperature
+    target:
+      entity_id: climate.trv_roof
+    data:
+      temperature: 15
+  mode: single
+- id: '1631266612994'
+  alias: Low Battery Warning
+  description: ''
+  trigger:
+  - type: battery_level
+    platform: device
+    device_id: d70e694f0e4111eba5e2892afe3a4fd9
+    entity_id: sensor.backdoor_battery
+    domain: sensor
+    below: 15
+  condition: []
+  action:
+  - device_id: da437ed8095111eb8c3ec58dac679adf
+    domain: mobile_app
+    type: notify
+    title: ''
+    message: Low Battery Warning
+  mode: single

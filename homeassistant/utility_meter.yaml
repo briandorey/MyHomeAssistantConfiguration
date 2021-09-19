@@ -1,0 +1,103 @@
+# Start Electric Meter
+energy_electric_total_usage_hourly:
+    source: sensor.electrictokwh
+    cycle: hourly
+    tariffs:
+    - peak
+energy_electric_total_usage_daily:
+  source: sensor.electrictokwh
+  cycle: daily
+  tariffs:
+    - peak
+energy_electric_total_usage_weekly:
+  source: sensor.electrictokwh
+  cycle: weekly
+  tariffs:
+    - peak
+energy_electric_total_usage_monthly:
+  source: sensor.electrictokwh
+  cycle: monthly
+  tariffs:
+    - peak
+energy_electric_total_usage_yearly:
+  source: sensor.electrictokwh
+  cycle: yearly
+  tariffs:
+    - peak
+# End Electric Meter
+
+# Start Gas Meter
+energy_gas_total_usage_hourly:
+  source: sensor.gastocubicmeter
+  cycle: hourly
+  tariffs:
+    - peak    
+energy_gas_total_usage_daily:
+  source: sensor.gastocubicmeter
+  cycle: daily
+  tariffs:
+    - peak
+energy_gas_total_usage_weekly:
+  source: sensor.gastocubicmeter
+  cycle: weekly  
+  tariffs:
+    - peak
+energy_gas_total_usage_monthly:
+  source: sensor.gastocubicmeter
+  cycle: monthly  
+  tariffs:
+    - peak
+energy_gas_total_usage_yearly:
+  source: sensor.gastocubicmeter
+  cycle: yearly  
+  tariffs:
+    - peak    
+# End Gas Meter 
+
+# Start Solar PV Meter   
+energy_solarpv_total_usage_hourly:
+  source: sensor.solarpv_totalgenerated
+  cycle: hourly
+  tariffs:
+    - peak    
+energy_solarpv_total_usage_daily:
+  source: sensor.solarpv_totalgenerated
+  cycle: daily
+  tariffs:
+    - peak
+energy_solarpv_total_usage_monthly:
+  source: sensor.solarpv_totalgenerated
+  cycle: monthly  
+  tariffs:
+    - peak
+energy_solarpv_total_usage_yearly:
+  source: sensor.solarpv_totalgenerated
+  cycle: yearly  
+  tariffs:
+    - peak
+# End Solar PV Meter    
+# Loft Shelly   
+
+energy_loftoven_usage_daily:
+  source: sensor.energy_shelly_oven
+  cycle: daily  
+  tariffs:
+    - peak
+      
+energy_loftworkbench_usage_daily:
+  source: sensor.energy_shelly_workbench
+  cycle: daily  
+  tariffs:
+    - peak
+      
+energy_loftoven_usage_monthly:
+  source: sensor.energy_shelly_oven
+  cycle: monthly  
+  tariffs:
+    - peak
+      
+energy_loftworkbench_usage_monthly:
+  source: sensor.energy_shelly_workbench
+  cycle: monthly  
+  tariffs:
+    - peak

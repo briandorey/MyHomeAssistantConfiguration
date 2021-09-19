@@ -1,0 +1,2323 @@
+{
+    "version": 1,
+    "key": "lovelace",
+    "data": {
+        "config": {
+            "views": [
+                {
+                    "title": "Home",
+                    "icon": "mdi:home",
+                    "panel": false,
+                    "badges": [],
+                    "cards": [
+                        {
+                            "type": "vertical-stack",
+                            "title": "Outdoors",
+                            "cards": [
+                                {
+                                    "type": "weather-forecast",
+                                    "entity": "weather.home",
+                                    "name": "Swanage"
+                                },
+                                {
+                                    "type": "horizontal-stack",
+                                    "cards": [
+                                        {
+                                            "type": "custom:mini-graph-card",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.tempoutdoorwindow_temperature",
+                                                    "name": "Outdoor",
+                                                    "color": "green"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "custom:mini-graph-card",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.tempoutdoorwindow_humidity",
+                                                    "name": "Humidity",
+                                                    "color": "lightblue"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "custom:mini-graph-card",
+                                    "entities": [
+                                        {
+                                            "entity": "sensor.tempoutdoorwindow_temperature",
+                                            "aggregate_func": "max",
+                                            "name": "Max",
+                                            "color": null
+                                        },
+                                        {
+                                            "entity": "sensor.tempoutdoorwindow_temperature",
+                                            "aggregate_func": "min",
+                                            "name": "Min"
+                                        },
+                                        {
+                                            "entity": "sensor.tempoutdoorwindow_temperature",
+                                            "aggregate_func": "Avg",
+                                            "name": "Avg",
+                                            "color": "green"
+                                        }
+                                    ],
+                                    "name": "Temp outside daily (last week)",
+                                    "hours_to_show": 168,
+                                    "group_by": "date"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "vertical-stack",
+                            "title": "Temperature Sensors",
+                            "cards": [
+                                {
+                                    "type": "custom:mini-graph-card",
+                                    "entities": [
+                                        {
+                                            "entity": "sensor.homeaveragetemp",
+                                            "name": "House Average",
+                                            "color": "lightgrey"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "horizontal-stack",
+                                    "cards": [
+                                        {
+                                            "type": "custom:mini-graph-card",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.temploft_temperature",
+                                                    "name": "Loft",
+                                                    "color": "red"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "custom:mini-graph-card",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.hallway_temperature",
+                                                    "name": "Hallway"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "custom:mini-graph-card",
+                                    "entities": [
+                                        {
+                                            "entity": "sensor.hallway_pressure",
+                                            "name": "Pressure",
+                                            "color": "lightblue"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "vertical-stack",
+                            "title": "Hot Water",
+                            "cards": [
+                                {
+                                    "type": "custom:mini-graph-card",
+                                    "entities": [
+                                        {
+                                            "entity": "sensor.hot_water_top",
+                                            "name": "Cylinder"
+                                        },
+                                        {
+                                            "entity": "sensor.hot_water_base"
+                                        },
+                                        {
+                                            "entity": "sensor.solar_water_panel"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "custom:mini-graph-card",
+                                    "line_width": 1,
+                                    "icon": "mdi:pump",
+                                    "points_per_hour": 60,
+                                    "update_interval": 30,
+                                    "aggregate_func": "max",
+                                    "state_map": [
+                                        {
+                                            "value": "off",
+                                            "label": "Off"
+                                        },
+                                        {
+                                            "value": "on",
+                                            "label": "Running"
+                                        }
+                                    ],
+                                    "entities": [
+                                        {
+                                            "entity": "binary_sensor.solar_water_pump",
+                                            "color": "lightblue"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "vertical-stack",
+                                    "title": "Doors and Windows",
+                                    "cards": [
+                                        {
+                                            "type": "horizontal-stack",
+                                            "cards": [
+                                                {
+                                                    "type": "custom:button-card",
+                                                    "entity": "binary_sensor.switchlofthatch_contact",
+                                                    "icon": "mdi:door",
+                                                    "name": "Loft Hatch",
+                                                    "show_last_changed": true,
+                                                    "show-state": true,
+                                                    "state": [
+                                                        {
+                                                            "value": "on",
+                                                            "color": "rgb(200, 0, 0)",
+                                                            "icon": "mdi:door-open"
+                                                        },
+                                                        {
+                                                            "value": "off",
+                                                            "color": "rgb(0, 200, 0)",
+                                                            "icon": "mdi:door"
+                                                        }
+                                                    ],
+                                                    "styles": {
+                                                        "name": [
+                                                            {
+                                                                "font-size": "16px"
+                                                            }
+                                                        ],
+                                                        "label": [
+                                                            {
+                                                                "font-size": "13px"
+                                                            }
+                                                        ]
+                                                    }
+                                                },
+                                                {
+                                                    "type": "custom:button-card",
+                                                    "entity": "binary_sensor.loft_window_one_contact",
+                                                    "icon": "mdi:door",
+                                                    "name": "Left Window",
+                                                    "show_last_changed": true,
+                                                    "show-state": true,
+                                                    "state": [
+                                                        {
+                                                            "value": "on",
+                                                            "color": "rgb(200, 0, 0)",
+                                                            "icon": "mdi:window-open"
+                                                        },
+                                                        {
+                                                            "value": "off",
+                                                            "color": "rgb(0, 200, 0)",
+                                                            "icon": "mdi:window-closed"
+                                                        }
+                                                    ],
+                                                    "styles": {
+                                                        "name": [
+                                                            {
+                                                                "font-size": "16px"
+                                                            }
+                                                        ],
+                                                        "label": [
+                                                            {
+                                                                "font-size": "13px"
+                                                            }
+                                                        ]
+                                                    }
+                                                },
+                                                {
+                                                    "type": "custom:button-card",
+                                                    "entity": "binary_sensor.loftwindowright_contact",
+                                                    "icon": "mdi:door",
+                                                    "name": "Right Window",
+                                                    "show_last_changed": true,
+                                                    "show-state": true,
+                                                    "state": [
+                                                        {
+                                                            "value": "on",
+                                                            "color": "rgb(200, 0, 0)",
+                                                            "icon": "mdi:window-open"
+                                                        },
+                                                        {
+                                                            "value": "off",
+                                                            "color": "rgb(0, 200, 0)",
+                                                            "icon": "mdi:window-closed"
+                                                        }
+                                                    ],
+                                                    "styles": {
+                                                        "name": [
+                                                            {
+                                                                "font-size": "16px"
+                                                            }
+                                                        ],
+                                                        "label": [
+                                                            {
+                                                                "font-size": "13px"
+                                                            }
+                                                        ]
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "horizontal-stack",
+                                            "cards": [
+                                                {
+                                                    "type": "custom:button-card",
+                                                    "entity": "binary_sensor.frontdoor_contact",
+                                                    "icon": "mdi:door",
+                                                    "name": "Front Door",
+                                                    "show_last_changed": true,
+                                                    "show-state": true,
+                                                    "state": [
+                                                        {
+                                                            "value": "on",
+                                                            "color": "rgb(200, 0, 0)",
+                                                            "icon": "mdi:door-open"
+                                                        },
+                                                        {
+                                                            "value": "off",
+                                                            "color": "rgb(0, 200, 0)",
+                                                            "icon": "mdi:door"
+                                                        }
+                                                    ],
+                                                    "styles": {
+                                                        "name": [
+                                                            {
+                                                                "font-size": "16px"
+                                                            }
+                                                        ],
+                                                        "label": [
+                                                            {
+                                                                "font-size": "13px"
+                                                            }
+                                                        ]
+                                                    }
+                                                },
+                                                {
+                                                    "type": "custom:button-card",
+                                                    "entity": "binary_sensor.backdoor_contact",
+                                                    "icon": "mdi:door",
+                                                    "name": "Back Door",
+                                                    "show_last_changed": true,
+                                                    "show-state": true,
+                                                    "state": [
+                                                        {
+                                                            "value": "on",
+                                                            "color": "rgb(200, 0, 0)",
+                                                            "icon": "mdi:door-open"
+                                                        },
+                                                        {
+                                                            "value": "off",
+                                                            "color": "rgb(0, 200, 0)",
+                                                            "icon": "mdi:door"
+                                                        }
+                                                    ],
+                                                    "styles": {
+                                                        "name": [
+                                                            {
+                                                                "font-size": "16px"
+                                                            }
+                                                        ],
+                                                        "label": [
+                                                            {
+                                                                "font-size": "13px"
+                                                            }
+                                                        ]
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "glance",
+                                    "entities": [
+                                        {
+                                            "entity": "sensor.back_door_open_today",
+                                            "name": "Back Door",
+                                            "icon": "mdi:door"
+                                        },
+                                        {
+                                            "entity": "sensor.front_door_open_today",
+                                            "name": "Front Door",
+                                            "icon": "mdi:door"
+                                        },
+                                        {
+                                            "entity": "sensor.solar_pump_running_today",
+                                            "name": "Solar Pump"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "vertical-stack",
+                            "title": "Energy Usage",
+                            "cards": [
+                                {
+                                    "type": "glance",
+                                    "entities": [
+                                        {
+                                            "entity": "sensor.mains_current",
+                                            "icon": "mdi:power-plug",
+                                            "color": "red"
+                                        },
+                                        {
+                                            "entity": "sensor.electric_meter",
+                                            "icon": "mdi:power"
+                                        },
+                                        {
+                                            "entity": "sensor.gas_meter"
+                                        }
+                                    ],
+                                    "state_color": false,
+                                    "show_name": true
+                                },
+                                {
+                                    "type": "entities",
+                                    "entities": [
+                                        {
+                                            "entity": "sensor.energy_electric_total_usage_hourly_peak",
+                                            "name": "Houly Electric Usage",
+                                            "icon": "mdi:clock-outline"
+                                        },
+                                        {
+                                            "entity": "sensor.energy_electric_total_usage_daily_peak",
+                                            "name": "Daily Electric Usage",
+                                            "icon": "mdi:calendar-today"
+                                        },
+                                        {
+                                            "entity": "sensor.energy_electric_total_usage_monthly_peak",
+                                            "name": "Monthly Electric Usage",
+                                            "icon": "mdi:calendar-blank"
+                                        },
+                                        {
+                                            "entity": "sensor.energy_gas_total_usage_daily_peak",
+                                            "name": "Daily Gas Usage",
+                                            "icon": "mdi:calendar-today",
+                                            "secondary_info": "last-changed"
+                                        },
+                                        {
+                                            "entity": "sensor.energy_gas_total_usage_monthly_peak",
+                                            "name": "Monthly Gas Usage",
+                                            "icon": "mdi:calendar-blank"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "horizontal-stack",
+                                    "title": "Network",
+                                    "cards": [
+                                        {
+                                            "type": "entity",
+                                            "entity": "sensor.wifi",
+                                            "name": "Connected WiFi Devices",
+                                            "icon": "hass:wifi"
+                                        },
+                                        {
+                                            "type": "entity",
+                                            "entity": "sensor.firewall_uptime",
+                                            "icon": "hass:clock"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "title": "Energy distribution today",
+                            "type": "energy-distribution",
+                            "link_dashboard": true
+                        }
+                    ]
+                },
+                {
+                    "title": "Rooms",
+                    "path": "rooms",
+                    "icon": "mdi:home-thermometer",
+                    "badges": [],
+                    "cards": [
+                        {
+                            "type": "vertical-stack",
+                            "title": "Downstairs",
+                            "cards": [
+                                {
+                                    "type": "horizontal-stack",
+                                    "cards": [
+                                        {
+                                            "type": "custom:mini-graph-card",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.tempbrian_temperature",
+                                                    "name": "Brian Bedroom"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "custom:mini-graph-card",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.tempbrian_humidity",
+                                                    "name": "Humidity",
+                                                    "color": "lightblue"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "horizontal-stack",
+                                    "cards": [
+                                        {
+                                            "type": "custom:mini-graph-card",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.templivingroom_temperature",
+                                                    "name": "Living Room"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "custom:mini-graph-card",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.templivingroom_humidity",
+                                                    "name": "Humidity",
+                                                    "color": "lightblue"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "horizontal-stack",
+                                    "cards": [
+                                        {
+                                            "type": "custom:mini-graph-card",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.tempkitchen_temperature",
+                                                    "name": "Kitchen"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "custom:mini-graph-card",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.tempkitchen_humidity",
+                                                    "name": "Humidity",
+                                                    "color": "lightblue"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "vertical-stack",
+                            "title": "Upstairs",
+                            "cards": [
+                                {
+                                    "type": "horizontal-stack",
+                                    "cards": [
+                                        {
+                                            "type": "custom:mini-graph-card",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.tempandrew_temperature",
+                                                    "name": "Andrew Bedroom"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "custom:mini-graph-card",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.tempandrew_humidity",
+                                                    "name": "Humidity",
+                                                    "color": "lightblue"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "horizontal-stack",
+                                    "cards": [
+                                        {
+                                            "type": "custom:mini-graph-card",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.tempnetworkcupboard_temperature",
+                                                    "name": "Network Temperature"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "custom:mini-graph-card",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.tempandrew_pressure",
+                                                    "name": "Pressure",
+                                                    "color": "lightblue"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "horizontal-stack",
+                                    "cards": [
+                                        {
+                                            "type": "custom:mini-graph-card",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.tempmumbedroom_temperature",
+                                                    "name": "Mum/Dad Bedroom"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "custom:mini-graph-card",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.bathroom_temperature",
+                                                    "name": "Bathroom"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "vertical-stack",
+                            "title": "Other Locations",
+                            "cards": [
+                                {
+                                    "type": "horizontal-stack",
+                                    "cards": [
+                                        {
+                                            "type": "custom:mini-graph-card",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.temploft_temperature",
+                                                    "name": "Loft"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "custom:mini-graph-card",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.temploft_humidity",
+                                                    "name": "Humidity",
+                                                    "color": "lightblue"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "horizontal-stack",
+                                    "cards": [
+                                        {
+                                            "type": "custom:mini-graph-card",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.hallway_temperature",
+                                                    "name": "Hallway"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "custom:mini-graph-card",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.hallway_humidity",
+                                                    "name": "Humidity",
+                                                    "color": "lightblue"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "horizontal-stack",
+                                    "cards": [
+                                        {
+                                            "type": "custom:mini-graph-card",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.temploftwater_temperature",
+                                                    "name": "Loft Water Tank Air"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "custom:mini-graph-card",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.temploftwater_humidity",
+                                                    "name": "Humidity",
+                                                    "color": "lightblue"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "sensor.backdoor_battery",
+                                    "name": "Back Door"
+                                },
+                                {
+                                    "entity": "sensor.frontdoor_battery",
+                                    "name": "Front Door"
+                                },
+                                {
+                                    "entity": "sensor.loft_window_one_battery",
+                                    "name": "Loft Left Window"
+                                },
+                                {
+                                    "entity": "sensor.loftwindowright_battery",
+                                    "name": "Loft Right Window"
+                                },
+                                {
+                                    "entity": "sensor.tempandrew_battery",
+                                    "name": "Andrew Temp Sensor"
+                                },
+                                {
+                                    "entity": "sensor.tempbrian_battery",
+                                    "name": "Brian Temp Sensor"
+                                },
+                                {
+                                    "entity": "sensor.tempoutdoorwindow_battery",
+                                    "name": "Garden Temp Sensor"
+                                },
+                                {
+                                    "entity": "sensor.tempkitchen_battery",
+                                    "name": "Kitchen Temp Sensor"
+                                },
+                                {
+                                    "entity": "sensor.hallway_battery",
+                                    "name": "Hallway"
+                                },
+                                {
+                                    "entity": "sensor.templivingroom_battery",
+                                    "name": "Living Room  Temp Sensor"
+                                },
+                                {
+                                    "entity": "sensor.temploft_battery",
+                                    "name": "Loft Battery"
+                                },
+                                {
+                                    "entity": "sensor.tempnetworkcupboard_battery",
+                                    "name": "Network Cupboard Battery"
+                                },
+                                {
+                                    "entity": "sensor.tempmumbedroom_battery",
+                                    "name": "Mum / Dad Bedroom Battery"
+                                },
+                                {
+                                    "entity": "sensor.switchlofthatch_battery",
+                                    "name": "Loft Hatch Battery"
+                                },
+                                {
+                                    "entity": "sensor.temploftwater_battery"
+                                }
+                            ],
+                            "title": "Battery Status"
+                        }
+                    ]
+                },
+                {
+                    "title": "Media Players",
+                    "path": "media-players",
+                    "icon": "mdi:music",
+                    "badges": [],
+                    "cards": [
+                        {
+                            "type": "vertical-stack",
+                            "cards": [
+                                {
+                                    "type": "media-control",
+                                    "entity": "media_player.kitchen"
+                                },
+                                {
+                                    "type": "horizontal-stack",
+                                    "cards": [
+                                        {
+                                            "type": "picture",
+                                            "image": "http://home/local/bbc-radio_1.svg",
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "media_player.select_source",
+                                                "service_data": {
+                                                    "entity_id": "media_player.kitchen",
+                                                    "source": "BBC Radio 1"
+                                                }
+                                            },
+                                            "name": "BBC Radio 1",
+                                            "icon": "mdi:radio"
+                                        },
+                                        {
+                                            "type": "picture",
+                                            "image": "http://home/local/bbc-radio_2.svg",
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "media_player.select_source",
+                                                "service_data": {
+                                                    "entity_id": "media_player.kitchen",
+                                                    "source": "BBC Radio 2"
+                                                }
+                                            },
+                                            "name": "BBC Radio 2",
+                                            "icon": "mdi:radio"
+                                        },
+                                        {
+                                            "type": "picture",
+                                            "image": "http://home/local/heart.svg",
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "media_player.select_source",
+                                                "service_data": {
+                                                    "entity_id": "media_player.kitchen_sonos",
+                                                    "source": "Heart Dorset"
+                                                }
+                                            },
+                                            "name": "Heart Dorset",
+                                            "icon": "mdi:radio"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "horizontal-stack",
+                                    "cards": [
+                                        {
+                                            "type": "picture",
+                                            "image": "http://home/local/bbc-radio-solent.svg",
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "media_player.select_source",
+                                                "service_data": {
+                                                    "entity_id": "media_player.kitchen",
+                                                    "source": "BBC Radio Solent"
+                                                }
+                                            },
+                                            "name": "BBC Radio Solent",
+                                            "icon": "mdi:radio"
+                                        },
+                                        {
+                                            "type": "picture",
+                                            "image": "http://home/local/bbc-radio-solentwest.svg",
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "media_player.select_source",
+                                                "service_data": {
+                                                    "entity_id": "media_player.kitchen",
+                                                    "source": "BBC Radio Solent West Dorset"
+                                                }
+                                            },
+                                            "name": "BBC Radio Solent West Dorset",
+                                            "icon": "mdi:radio"
+                                        },
+                                        {
+                                            "type": "button",
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "media_player.media_stop",
+                                                "service_data": {
+                                                    "entity_id": "media_player.kitchen"
+                                                }
+                                            },
+                                            "name": "Stop",
+                                            "icon": "mdi:stop-circle-outline",
+                                            "show_name": false,
+                                            "show_state": false
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "vertical-stack",
+                            "cards": [
+                                {
+                                    "type": "media-control",
+                                    "entity": "media_player.living_room"
+                                },
+                                {
+                                    "type": "horizontal-stack",
+                                    "cards": [
+                                        {
+                                            "type": "picture",
+                                            "image": "http://home/local/bbc-radio_1.svg",
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "media_player.select_source",
+                                                "service_data": {
+                                                    "entity_id": "media_player.living_room",
+                                                    "source": "BBC Radio 1"
+                                                }
+                                            },
+                                            "name": "BBC Radio 1",
+                                            "icon": "mdi:radio"
+                                        },
+                                        {
+                                            "type": "picture",
+                                            "image": "http://home/local/bbc-radio_2.svg",
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "media_player.select_source",
+                                                "service_data": {
+                                                    "entity_id": "media_player.living_room",
+                                                    "source": "BBC Radio 2"
+                                                }
+                                            },
+                                            "name": "BBC Radio 2",
+                                            "icon": "mdi:radio"
+                                        },
+                                        {
+                                            "type": "picture",
+                                            "image": "http://home/local/heart.svg",
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "media_player.select_source",
+                                                "service_data": {
+                                                    "entity_id": "media_player.living_room_sonos",
+                                                    "source": "Heart Dorset"
+                                                }
+                                            },
+                                            "name": "Heart Dorset",
+                                            "icon": "mdi:radio"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "horizontal-stack",
+                                    "cards": [
+                                        {
+                                            "type": "picture",
+                                            "image": "http://home/local/bbc-radio-solent.svg",
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "media_player.select_source",
+                                                "service_data": {
+                                                    "entity_id": "media_player.living_room",
+                                                    "source": "BBC Radio Solent"
+                                                }
+                                            },
+                                            "name": "BBC Radio Solent",
+                                            "icon": "mdi:radio"
+                                        },
+                                        {
+                                            "type": "picture",
+                                            "image": "http://home/local/bbc-radio-solentwest.svg",
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "media_player.select_source",
+                                                "service_data": {
+                                                    "entity_id": "media_player.living_room",
+                                                    "source": "BBC Radio Solent West Dorset"
+                                                }
+                                            },
+                                            "name": "BBC Radio Solent West Dorset",
+                                            "icon": "mdi:radio"
+                                        },
+                                        {
+                                            "type": "button",
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "media_player.media_stop",
+                                                "service_data": {
+                                                    "entity_id": "media_player.living_room"
+                                                }
+                                            },
+                                            "name": "Stop",
+                                            "icon": "mdi:stop-circle-outline",
+                                            "show_name": false,
+                                            "show_state": false
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "media-control",
+                            "entity": "media_player.kitchen"
+                        },
+                        {
+                            "type": "media-control",
+                            "entity": "media_player.living_room"
+                        }
+                    ]
+                },
+                {
+                    "title": "Network Storage",
+                    "path": "network-storage",
+                    "icon": "mdi:nas",
+                    "badges": [],
+                    "cards": [
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "sensor.diskstation_volume_1_average_disk_temp",
+                                    "name": "Average Disk Temp"
+                                },
+                                {
+                                    "entity": "sensor.diskstation_volume_1_status",
+                                    "name": "Volume Status"
+                                },
+                                {
+                                    "entity": "sensor.diskstation_volume_1_used_space",
+                                    "name": "Volume Used Space"
+                                },
+                                {
+                                    "entity": "sensor.diskstation_volume_1_volume_used",
+                                    "name": "Volume Used"
+                                }
+                            ],
+                            "title": "Overview"
+                        },
+                        {
+                            "type": "vertical-stack",
+                            "cards": [
+                                {
+                                    "type": "horizontal-stack",
+                                    "cards": [
+                                        {
+                                            "type": "custom:mini-graph-card",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.diskstation_network_down",
+                                                    "name": "Network Down"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "custom:mini-graph-card",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.diskstation_network_up",
+                                                    "name": "Network Up",
+                                                    "color": "lightblue"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "vertical-stack",
+                            "cards": [
+                                {
+                                    "type": "horizontal-stack",
+                                    "cards": [
+                                        {
+                                            "type": "custom:mini-graph-card",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.synology_temperature",
+                                                    "name": "Synology Temperature"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "custom:mini-graph-card",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.diskstation_cpu_load_5_min",
+                                                    "name": "CPU Load",
+                                                    "color": "lightblue"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "sensor.ups_battery_runtime"
+                                },
+                                {
+                                    "entity": "sensor.ups_battery_temperature"
+                                },
+                                {
+                                    "entity": "sensor.ups_battery_voltage"
+                                },
+                                {
+                                    "entity": "sensor.ups_input_voltage_2"
+                                },
+                                {
+                                    "entity": "sensor.ups_load_2"
+                                },
+                                {
+                                    "entity": "sensor.ups_output_frequency"
+                                },
+                                {
+                                    "entity": "sensor.ups_output_voltage"
+                                },
+                                {
+                                    "entity": "sensor.nasupspowerwatts"
+                                }
+                            ],
+                            "title": "Shed NAS UPS",
+                            "footer": {
+                                "type": "graph",
+                                "entity": "sensor.nasupspowerwatts",
+                                "hours_to_show": 24
+                            }
+                        },
+                        {
+                            "type": "vertical-stack",
+                            "cards": [
+                                {
+                                    "type": "glance",
+                                    "title": "Drive Status",
+                                    "entities": [
+                                        {
+                                            "entity": "sensor.diskstation_drive_1_status",
+                                            "name": 1
+                                        },
+                                        {
+                                            "entity": "sensor.diskstation_drive_2_status",
+                                            "name": 2
+                                        },
+                                        {
+                                            "entity": "sensor.diskstation_drive_3_status",
+                                            "name": 3
+                                        },
+                                        {
+                                            "entity": "sensor.diskstation_drive_4_status",
+                                            "name": 4
+                                        },
+                                        {
+                                            "entity": "sensor.diskstation_drive_5_status",
+                                            "name": 5
+                                        },
+                                        {
+                                            "entity": "sensor.diskstation_drive_6_status",
+                                            "name": 6
+                                        },
+                                        {
+                                            "entity": "sensor.diskstation_drive_7_status",
+                                            "name": 7
+                                        },
+                                        {
+                                            "entity": "sensor.diskstation_drive_8_status",
+                                            "name": 8
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "glance",
+                                    "title": "Drive Temperature",
+                                    "entities": [
+                                        {
+                                            "entity": "sensor.diskstation_drive_1_temperature",
+                                            "name": 1
+                                        },
+                                        {
+                                            "entity": "sensor.diskstation_drive_2_temperature",
+                                            "name": 2
+                                        },
+                                        {
+                                            "entity": "sensor.diskstation_drive_3_temperature",
+                                            "name": 3
+                                        },
+                                        {
+                                            "entity": "sensor.diskstation_drive_4_temperature",
+                                            "name": 4
+                                        },
+                                        {
+                                            "entity": "sensor.diskstation_drive_5_temperature",
+                                            "name": 5
+                                        },
+                                        {
+                                            "entity": "sensor.diskstation_drive_6_temperature",
+                                            "name": 6
+                                        },
+                                        {
+                                            "entity": "sensor.diskstation_drive_7_temperature",
+                                            "name": 7
+                                        },
+                                        {
+                                            "entity": "sensor.diskstation_drive_8_temperature",
+                                            "name": 8
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "Electric Usage",
+                    "path": "electric-usage",
+                    "icon": "mdi:lightning-bolt",
+                    "badges": [],
+                    "cards": [
+                        {
+                            "type": "vertical-stack",
+                            "cards": [
+                                {
+                                    "type": "custom:mini-graph-card",
+                                    "entities": [
+                                        {
+                                            "entity": "sensor.networkcupboard_voltage"
+                                        }
+                                    ],
+                                    "name": "Mains Voltage",
+                                    "icon": "mdi:power-standby",
+                                    "hours_to_show": 24,
+                                    "line_width": 2,
+                                    "points_per_hour": 60
+                                },
+                                {
+                                    "type": "custom:mini-graph-card",
+                                    "entities": [
+                                        {
+                                            "entity": "sensor.mains_current"
+                                        }
+                                    ],
+                                    "name": "Mains Current",
+                                    "icon": "mdi:speedometer-slow",
+                                    "hours_to_show": 24,
+                                    "line_width": 2,
+                                    "points_per_hour": 60
+                                },
+                                {
+                                    "type": "custom:mini-graph-card",
+                                    "entities": [
+                                        {
+                                            "entity": "sensor.energy_mainswatts"
+                                        }
+                                    ],
+                                    "name": "Mains Watts",
+                                    "icon": "mdi:flash",
+                                    "line_color": "red",
+                                    "hours_to_show": 24,
+                                    "line_width": 2,
+                                    "points_per_hour": 60
+                                },
+                                {
+                                    "type": "custom:mini-graph-card",
+                                    "entities": [
+                                        {
+                                            "entity": "sensor.solarpv_gridpower"
+                                        }
+                                    ],
+                                    "name": "Solar PV Watts",
+                                    "hours_to_show": 24,
+                                    "points_per_hour": 60,
+                                    "line_width": 2,
+                                    "line_color": "green",
+                                    "icon": "mdi:solar-panel"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "vertical-stack",
+                            "cards": [
+                                {
+                                    "type": "entities",
+                                    "entities": [
+                                        {
+                                            "entity": "sensor.smartplugbrianpc_current_consumption",
+                                            "name": "Brian PC",
+                                            "icon": "mdi:desktop-mac"
+                                        },
+                                        {
+                                            "entity": "sensor.powerbriantv_power",
+                                            "name": "Brian TV",
+                                            "icon": "mdi:television"
+                                        },
+                                        {
+                                            "entity": "sensor.powerandpctv_power",
+                                            "name": "Andrew PC and TV",
+                                            "icon": "mdi:desktop-mac"
+                                        },
+                                        {
+                                            "entity": "sensor.powerlivingroomtvsocket_power",
+                                            "name": "Living Room TV",
+                                            "icon": "mdi:television"
+                                        },
+                                        {
+                                            "entity": "sensor.washing_machine_power",
+                                            "name": "Washing Machine",
+                                            "icon": "mdi:washing-machine"
+                                        },
+                                        {
+                                            "entity": "sensor.networkcupboard_current_consumption",
+                                            "name": "Network Cupboard",
+                                            "icon": "mdi:server-network"
+                                        },
+                                        {
+                                            "entity": "sensor.nasupspowerwatts",
+                                            "name": "Shed NAS",
+                                            "icon": "mdi:server"
+                                        },
+                                        {
+                                            "entity": "sensor.ovenandpump_power",
+                                            "name": "Loft Oven and Pump",
+                                            "icon": "mdi:pump"
+                                        },
+                                        {
+                                            "entity": "sensor.workbench_power",
+                                            "name": "Loft Workbench",
+                                            "icon": "mdi:tools"
+                                        },
+                                        {
+                                            "entity": "sensor.metered_devices_power",
+                                            "name": "Total Metered Devices"
+                                        }
+                                    ],
+                                    "title": "Metered Devices"
+                                },
+                                {
+                                    "type": "entity",
+                                    "entity": "sensor.unmetered_devices_power"
+                                },
+                                {
+                                    "title": "Energy distribution today",
+                                    "type": "energy-distribution",
+                                    "link_dashboard": true
+                                }
+                            ]
+                        },
+                        {
+                            "type": "vertical-stack",
+                            "cards": [
+                                {
+                                    "type": "entities",
+                                    "entities": [
+                                        {
+                                            "entity": "sensor.smartplugbrianpc_current_consumption",
+                                            "type": "custom:multiple-entity-row",
+                                            "name": "Brian PC",
+                                            "icon": "mdi:desktop-mac",
+                                            "show_state": false,
+                                            "secondary_info": "last-changed",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.smartplugbrianpc_today_s_consumption",
+                                                    "name": "Today"
+                                                },
+                                                {
+                                                    "entity": "sensor.smartplugbrianpc_total_consumption",
+                                                    "name": "Total"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "entity": "sensor.powerandpctv_energy",
+                                            "type": "custom:multiple-entity-row",
+                                            "name": "Andrew PC & TV",
+                                            "icon": "mdi:desktop-mac",
+                                            "show_state": false,
+                                            "secondary_info": "last-changed",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.powerandpctv_energy",
+                                                    "name": "Total"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "entity": "sensor.powerlivingroomtvsocket_energy",
+                                            "type": "custom:multiple-entity-row",
+                                            "name": "Living Room TV",
+                                            "icon": "mdi:television",
+                                            "show_state": false,
+                                            "secondary_info": "last-changed",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.powerlivingroomtvsocket_energy",
+                                                    "name": "Total"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "entity": "sensor.washing_machine_today_power",
+                                            "type": "custom:multiple-entity-row",
+                                            "name": "Washing Machine",
+                                            "icon": "mdi:washing-machine",
+                                            "show_state": false,
+                                            "secondary_info": "last-changed",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.washing_machine_today_power",
+                                                    "name": "Today"
+                                                },
+                                                {
+                                                    "entity": "sensor.washing_machine_total_power",
+                                                    "name": "Total"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "entity": "sensor.energy_electric_total_usage_daily_peak",
+                                            "type": "custom:multiple-entity-row",
+                                            "name": "Electric Meter",
+                                            "show_state": false,
+                                            "secondary_info": "last-changed",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.energy_electric_total_usage_daily_peak",
+                                                    "name": "Today"
+                                                },
+                                                {
+                                                    "entity": "sensor.energy_electric_total_usage_monthly_peak",
+                                                    "name": "Monthly"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "entity": "sensor.energy_gas_total_usage_daily_peak",
+                                            "type": "custom:multiple-entity-row",
+                                            "name": "Gas Meter",
+                                            "icon": "mdi:fire",
+                                            "show_state": false,
+                                            "secondary_info": "last-changed",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.energy_gas_total_usage_daily_peak",
+                                                    "name": "Today"
+                                                },
+                                                {
+                                                    "entity": "sensor.energy_gas_total_usage_monthly_peak",
+                                                    "name": "Monthly"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "entity": "sensor.energy_loftoven_usage_daily_peak",
+                                            "type": "custom:multiple-entity-row",
+                                            "name": "Loft Oven & Pump",
+                                            "show_state": false,
+                                            "secondary_info": "last-changed",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.energy_loftoven_usage_daily_peak",
+                                                    "name": "Today"
+                                                },
+                                                {
+                                                    "entity": "sensor.energy_loftoven_usage_monthly_peak",
+                                                    "name": "Monthly"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "entity": "sensor.energy_loftworkbench_usage_daily_peak",
+                                            "type": "custom:multiple-entity-row",
+                                            "name": "Loft Workbench",
+                                            "show_state": false,
+                                            "secondary_info": "last-changed",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.energy_loftworkbench_usage_daily_peak",
+                                                    "name": "Today"
+                                                },
+                                                {
+                                                    "entity": "sensor.energy_loftworkbench_usage_monthly_peak",
+                                                    "name": "Monthly"
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "title": "Energy Consumption Totals"
+                                },
+                                {
+                                    "type": "glance",
+                                    "entities": [
+                                        {
+                                            "entity": "sensor.mains_current",
+                                            "icon": "mdi:power-plug",
+                                            "color": "red"
+                                        },
+                                        {
+                                            "entity": "sensor.electric_meter",
+                                            "icon": "mdi:power"
+                                        },
+                                        {
+                                            "entity": "sensor.gas_meter"
+                                        }
+                                    ],
+                                    "state_color": false,
+                                    "show_name": true
+                                },
+                                {
+                                    "type": "entities",
+                                    "entities": [
+                                        {
+                                            "entity": "sensor.energy_electric_total_usage_hourly_peak",
+                                            "name": "Houly Electric Usage",
+                                            "icon": "mdi:clock-outline"
+                                        },
+                                        {
+                                            "entity": "sensor.energy_electric_total_usage_daily_peak",
+                                            "name": "Daily Electric Usage",
+                                            "icon": "mdi:calendar-today"
+                                        },
+                                        {
+                                            "entity": "sensor.energy_electric_total_usage_weekly_peak",
+                                            "name": "Weekly Electric Usage",
+                                            "icon": "mdi:calendar-blank"
+                                        },
+                                        {
+                                            "entity": "sensor.energy_electric_total_usage_monthly_peak",
+                                            "name": "Monthly Electric Usage",
+                                            "icon": "mdi:calendar-blank"
+                                        },
+                                        {
+                                            "entity": "sensor.energy_electric_total_usage_yearly_peak",
+                                            "name": "Yearly Electric Usage",
+                                            "icon": "mdi:calendar-blank"
+                                        },
+                                        {
+                                            "entity": "sensor.energy_gas_total_usage_daily_peak",
+                                            "name": "Daily Gas Usage",
+                                            "icon": "mdi:calendar-today",
+                                            "secondary_info": "last-changed"
+                                        },
+                                        {
+                                            "entity": "sensor.energy_gas_total_usage_weekly_peak",
+                                            "name": "Weekly Gas Usage",
+                                            "icon": "mdi:calendar-blank"
+                                        },
+                                        {
+                                            "entity": "sensor.energy_gas_total_usage_monthly_peak",
+                                            "name": "Monthly Gas Usage",
+                                            "icon": "mdi:calendar-blank"
+                                        },
+                                        {
+                                            "entity": "sensor.energy_gas_total_usage_yearly_peak",
+                                            "name": "Yearly Gas Usage",
+                                            "icon": "mdi:calendar-blank"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "custom:mini-graph-card",
+                            "entities": [
+                                {
+                                    "entity": "sensor.energy_electric_total_usage_hourly_peak"
+                                }
+                            ],
+                            "name": "Mains Energy Usage Hourly",
+                            "icon": "mdi:power-standby",
+                            "hour24": true,
+                            "hours_to_show": 24,
+                            "line_width": 0,
+                            "points_per_hour": 1,
+                            "show": {
+                                "graph": "bar"
+                            }
+                        },
+                        {
+                            "type": "custom:mini-graph-card",
+                            "entities": [
+                                {
+                                    "entity": "sensor.energy_gas_total_usage_hourly_peak"
+                                }
+                            ],
+                            "name": "Gas Energy Usage Hourly",
+                            "icon": "mdi:fire",
+                            "hour24": true,
+                            "hours_to_show": 24,
+                            "line_width": 0,
+                            "points_per_hour": 1,
+                            "show": {
+                                "graph": "bar"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "title": "Solar PV",
+                    "path": "solar-pv",
+                    "icon": "mdi:solar-panel",
+                    "badges": [],
+                    "cards": [
+                        {
+                            "type": "sensor",
+                            "entity": "sensor.solarpv_gridpower",
+                            "graph": "line",
+                            "hours_to_show": 48
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "sensor.solarpv_panel_volts",
+                                    "secondary_info": "last-changed"
+                                },
+                                {
+                                    "entity": "sensor.solarpv_panel_amps"
+                                },
+                                {
+                                    "entity": "sensor.solarpv_gridpower"
+                                },
+                                {
+                                    "entity": "sensor.solarpv_inverter_temp"
+                                },
+                                {
+                                    "entity": "sensor.solarpv_totalgenerated",
+                                    "secondary_info": "last-changed"
+                                }
+                            ],
+                            "title": "Inverter"
+                        },
+                        {
+                            "type": "sensor",
+                            "entity": "sensor.solarpv_totalgenerated",
+                            "graph": "line",
+                            "hours_to_show": 48
+                        },
+                        {
+                            "type": "sensor",
+                            "entity": "sensor.solarpv_panel_amps",
+                            "graph": "line",
+                            "hours_to_show": 48
+                        },
+                        {
+                            "type": "sensor",
+                            "entity": "sensor.solarpv_panel_volts",
+                            "graph": "line",
+                            "hours_to_show": 48
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "sensor.energy_solarpv_total_usage_hourly_peak",
+                                    "name": "Hourly"
+                                },
+                                {
+                                    "entity": "sensor.energy_solarpv_total_usage_daily_peak",
+                                    "name": "Daily"
+                                },
+                                {
+                                    "entity": "sensor.energy_solarpv_total_usage_monthly_peak",
+                                    "name": "Monthly"
+                                }
+                            ],
+                            "title": "Solar PV Generated"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                "sensor.gb_co2_intensity",
+                                "sensor.gb_grid_fossil_fuel_percentage"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "FloorPlan",
+                    "path": "floorplan",
+                    "panel": true,
+                    "icon": "mdi:floor-plan",
+                    "badges": [],
+                    "cards": [
+                        {
+                            "type": "picture-elements",
+                            "title": "Floor Plan",
+                            "elements": [
+                                {
+                                    "type": "state-badge",
+                                    "entity": "sensor.mains_current",
+                                    "style": {
+                                        "color": "transparent",
+                                        "top": "10%",
+                                        "left": "62%"
+                                    }
+                                },
+                                {
+                                    "type": "state-badge",
+                                    "entity": "sensor.tempnetworkcupboard_temperature",
+                                    "name": "Network Cupboard",
+                                    "style": {
+                                        "color": "transparent",
+                                        "top": "37%",
+                                        "left": "27%"
+                                    }
+                                },
+                                {
+                                    "type": "state-badge",
+                                    "entity": "sensor.tempandrew_temperature",
+                                    "title": "Andrew Bedroom",
+                                    "name": "Andrew Bedroom",
+                                    "style": {
+                                        "color": "transparent",
+                                        "top": "17%",
+                                        "left": "17%"
+                                    }
+                                },
+                                {
+                                    "type": "state-badge",
+                                    "entity": "sensor.tempbrian_temperature",
+                                    "style": {
+                                        "color": "transparent",
+                                        "top": "17%",
+                                        "left": "47%"
+                                    }
+                                },
+                                {
+                                    "type": "state-badge",
+                                    "entity": "sensor.tempmumbedroom_temperature",
+                                    "name": "Bedroom 3",
+                                    "style": {
+                                        "color": "transparent",
+                                        "top": "52%",
+                                        "left": "17%"
+                                    }
+                                },
+                                {
+                                    "type": "state-badge",
+                                    "entity": "sensor.templivingroom_temperature",
+                                    "style": {
+                                        "color": "transparent",
+                                        "top": "52%",
+                                        "left": "47%"
+                                    }
+                                },
+                                {
+                                    "type": "state-badge",
+                                    "entity": "sensor.temploft_temperature",
+                                    "name": "Loft",
+                                    "style": {
+                                        "color": "transparent",
+                                        "top": "40%",
+                                        "left": "83%"
+                                    }
+                                },
+                                {
+                                    "type": "state-badge",
+                                    "entity": "sensor.hot_water_top",
+                                    "style": {
+                                        "color": "transparent",
+                                        "top": "72%",
+                                        "left": "18%"
+                                    }
+                                },
+                                {
+                                    "type": "state-badge",
+                                    "entity": "sensor.tempoutdoorwindow_temperature",
+                                    "style": {
+                                        "color": "transparent",
+                                        "top": "85%",
+                                        "left": "55%"
+                                    }
+                                },
+                                {
+                                    "type": "state-badge",
+                                    "entity": "sensor.hallway_temperature",
+                                    "title": "Hallway",
+                                    "style": {
+                                        "color": "transparent",
+                                        "top": "40%",
+                                        "left": "62%"
+                                    }
+                                },
+                                {
+                                    "type": "state-badge",
+                                    "entity": "sensor.bathroom_temperature",
+                                    "style": {
+                                        "color": "transparent",
+                                        "top": "85%",
+                                        "left": "12%"
+                                    }
+                                },
+                                {
+                                    "type": "state-badge",
+                                    "entity": "sensor.tempkitchen_temperature",
+                                    "style": {
+                                        "color": "transparent",
+                                        "top": "85%",
+                                        "left": "45%"
+                                    }
+                                },
+                                {
+                                    "type": "state-icon",
+                                    "entity": "media_player.living_room",
+                                    "style": {
+                                        "color": "transparent",
+                                        "top": "64%",
+                                        "left": "40%"
+                                    }
+                                },
+                                {
+                                    "type": "state-icon",
+                                    "entity": "media_player.kitchen",
+                                    "style": {
+                                        "color": "transparent",
+                                        "top": "90%",
+                                        "left": "40%"
+                                    }
+                                },
+                                {
+                                    "type": "state-icon",
+                                    "entity": "media_player.loft",
+                                    "style": {
+                                        "color": "transparent",
+                                        "top": "40%",
+                                        "left": "92%"
+                                    }
+                                },
+                                {
+                                    "type": "state-icon",
+                                    "entity": "media_player.brian_bedroom",
+                                    "style": {
+                                        "color": "transparent",
+                                        "top": "29%",
+                                        "left": "50%"
+                                    }
+                                }
+                            ],
+                            "image": "http://home/local/house.svg"
+                        }
+                    ]
+                },
+                {
+                    "title": "Video Camera",
+                    "path": "video-camera",
+                    "icon": "mdi:camera",
+                    "badges": [],
+                    "cards": [
+                        {
+                            "type": "picture-entity",
+                            "entity": "camera.camera_name",
+                            "image": "http://10.0.0.200/local/camera.jpg",
+                            "camera_image": "camera.camera_name",
+                            "name": "Living Room Camera"
+                        }
+                    ]
+                },
+                {
+                    "title": "Kitchen",
+                    "path": "kitchen",
+                    "icon": "mdi:washing-machine",
+                    "badges": [],
+                    "cards": [
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "sensor.washing_machine_current"
+                                },
+                                {
+                                    "entity": "sensor.washing_machine_power"
+                                },
+                                {
+                                    "entity": "sensor.washing_machine_reactive_power"
+                                },
+                                {
+                                    "entity": "sensor.washing_machine_today_power"
+                                },
+                                {
+                                    "entity": "sensor.washing_machine_total_power"
+                                },
+                                {
+                                    "entity": "binary_sensor.dryer_status"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "custom:mini-graph-card",
+                            "entities": [
+                                {
+                                    "entity": "sensor.washing_machine_power",
+                                    "name": "Washing Machine Power",
+                                    "color": "lightgrey",
+                                    "unit": "w"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "custom:mini-graph-card",
+                            "entities": [
+                                {
+                                    "entity": "sensor.washing_machine_current",
+                                    "name": "Washing Machine Current",
+                                    "color": "lightgrey"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "entity",
+                            "entity": "binary_sensor.dryer_status",
+                            "name": "Washing Machine Status"
+                        }
+                    ]
+                },
+                {
+                    "title": "UPS",
+                    "path": "ups",
+                    "icon": "mdi:power",
+                    "badges": [],
+                    "cards": [
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "sensor.ups_load"
+                                },
+                                {
+                                    "entity": "sensor.ups_battery",
+                                    "name": "Battery"
+                                },
+                                {
+                                    "entity": "sensor.networkcupboard_voltage",
+                                    "name": "Voltage"
+                                },
+                                {
+                                    "entity": "sensor.ups_output_voltage"
+                                },
+                                {
+                                    "entity": "sensor.networkcupboard_current_consumption",
+                                    "name": "Watts"
+                                },
+                                {
+                                    "entity": "sensor.networkcupboard_current",
+                                    "name": "Amps"
+                                },
+                                {
+                                    "entity": "sensor.networkcupboard_today_s_consumption",
+                                    "name": "Today",
+                                    "icon": "mdi:calendar-today"
+                                },
+                                {
+                                    "entity": "sensor.networkcupboard_total_consumption",
+                                    "icon": "mdi:calendar-blank",
+                                    "name": "Total"
+                                }
+                            ],
+                            "title": "Network Cupboard"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "sensor.ups_load_2"
+                                },
+                                {
+                                    "entity": "sensor.ups_battery_voltage"
+                                },
+                                {
+                                    "entity": "sensor.ups_input_voltage_2"
+                                },
+                                {
+                                    "entity": "sensor.ups_output_voltage"
+                                },
+                                {
+                                    "entity": "sensor.ups_output_frequency"
+                                },
+                                {
+                                    "entity": "sensor.ups_battery_runtime"
+                                },
+                                {
+                                    "entity": "sensor.ups_battery_temperature"
+                                },
+                                {
+                                    "entity": "sensor.ups_low_battery_runtime"
+                                },
+                                {
+                                    "entity": "sensor.ups_status_2"
+                                },
+                                {
+                                    "entity": "sensor.ups_status_data_2"
+                                }
+                            ],
+                            "title": "Shed NAS UPS"
+                        }
+                    ]
+                },
+                {
+                    "title": "Loft",
+                    "path": "loft-power",
+                    "badges": [],
+                    "cards": [
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "sensor.ovenandpump_energy"
+                                },
+                                {
+                                    "entity": "sensor.ovenandpump_power"
+                                },
+                                {
+                                    "entity": "sensor.ovenandpump_voltage"
+                                },
+                                {
+                                    "entity": "sensor.energy_loftoven_usage_monthly_peak",
+                                    "name": "Monthly Usage"
+                                },
+                                {
+                                    "entity": "sensor.energy_loftoven_usage_daily_peak",
+                                    "name": "Daily Usage"
+                                }
+                            ],
+                            "title": "Oven and Pump Power"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "sensor.workbench_energy"
+                                },
+                                {
+                                    "entity": "sensor.workbench_power"
+                                },
+                                {
+                                    "entity": "sensor.workbench_voltage"
+                                },
+                                {
+                                    "entity": "sensor.energy_loftworkbench_usage_monthly_peak",
+                                    "name": "Monthly Usage"
+                                },
+                                {
+                                    "entity": "sensor.energy_loftworkbench_usage_daily_peak",
+                                    "name": "Daily Usage"
+                                }
+                            ],
+                            "title": "Workbench Power"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "climate.trv_roof"
+                                },
+                                {
+                                    "entity": "sensor.trv_roof_position"
+                                },
+                                {
+                                    "entity": "binary_sensor.trv_roof_battery_low",
+                                    "name": "Battery Status"
+                                },
+                                {
+                                    "entity": "select.trv_roof_force"
+                                }
+                            ],
+                            "title": "Loft Radiator TRV"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "binary_sensor.switchlofthatch_battery_low",
+                                    "name": "Battery Status"
+                                },
+                                {
+                                    "entity": "binary_sensor.switchlofthatch_contact",
+                                    "name": "Contact"
+                                }
+                            ],
+                            "title": "Loft Hatch"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "sensor.temploft_temperature",
+                                    "name": "Loft Room"
+                                },
+                                {
+                                    "entity": "sensor.temploftwater_temperature",
+                                    "name": "Water Tank Area"
+                                },
+                                {
+                                    "entity": "sensor.temploftwater_humidity",
+                                    "name": "Water Tank Humidity"
+                                }
+                            ],
+                            "title": "Temperature Sensors"
+                        },
+                        {
+                            "type": "history-graph",
+                            "entities": [
+                                {
+                                    "entity": "sensor.temploft_temperature"
+                                },
+                                {
+                                    "entity": "sensor.temploftwater_temperature"
+                                }
+                            ],
+                            "hours_to_show": 48,
+                            "refresh_interval": 0,
+                            "title": "Loft Temperature Senors"
+                        },
+                        {
+                            "type": "horizontal-stack",
+                            "cards": [
+                                {
+                                    "type": "custom:button-card",
+                                    "entity": "binary_sensor.switchlofthatch_contact",
+                                    "icon": "mdi:door",
+                                    "name": "Loft Hatch",
+                                    "show_last_changed": true,
+                                    "show-state": true,
+                                    "state": [
+                                        {
+                                            "value": "on",
+                                            "color": "rgb(200, 0, 0)",
+                                            "icon": "mdi:door-open"
+                                        },
+                                        {
+                                            "value": "off",
+                                            "color": "rgb(0, 200, 0)",
+                                            "icon": "mdi:door"
+                                        }
+                                    ],
+                                    "styles": {
+                                        "name": [
+                                            {
+                                                "font-size": "16px"
+                                            }
+                                        ],
+                                        "label": [
+                                            {
+                                                "font-size": "13px"
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "type": "custom:button-card",
+                                    "entity": "binary_sensor.loft_window_one_contact",
+                                    "icon": "mdi:door",
+                                    "name": "Left Window",
+                                    "show_last_changed": true,
+                                    "color": "rgb(28, 128, 199)",
+                                    "show-state": true,
+                                    "state": [
+                                        {
+                                            "value": "on",
+                                            "color": "rgb(200, 0, 0)",
+                                            "icon": "mdi:mdi:window-open"
+                                        },
+                                        {
+                                            "value": "off",
+                                            "color": "rgb(0, 200, 0)",
+                                            "icon": "mdi:window-closed"
+                                        }
+                                    ],
+                                    "styles": {
+                                        "name": [
+                                            {
+                                                "font-size": "16px"
+                                            }
+                                        ],
+                                        "label": [
+                                            {
+                                                "font-size": "13px"
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "type": "custom:button-card",
+                                    "entity": "binary_sensor.loftwindowright_contact",
+                                    "icon": "mdi:door",
+                                    "name": "Right Window",
+                                    "show_last_changed": true,
+                                    "show-state": true,
+                                    "state": [
+                                        {
+                                            "value": "on",
+                                            "color": "rgb(200, 0, 0)",
+                                            "icon": "mdi:mdi:window-open"
+                                        },
+                                        {
+                                            "value": "off",
+                                            "color": "rgb(0,200,0)",
+                                            "icon": "mdi:window-closed"
+                                        }
+                                    ],
+                                    "styles": {
+                                        "name": [
+                                            {
+                                                "font-size": "16px"
+                                            }
+                                        ],
+                                        "label": [
+                                            {
+                                                "font-size": "13px"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "Statistics",
+                    "path": "statistics",
+                    "type": "sidebar",
+                    "badges": [],
+                    "cards": [
+                        {
+                            "type": "statistics-graph",
+                            "entities": [
+                                "sensor.networkcupboard_current_consumption"
+                            ],
+                            "days_to_show": 90,
+                            "chart_type": "line",
+                            "title": "Network Cupboard",
+                            "view_layout": {
+                                "position": "main"
+                            }
+                        },
+                        {
+                            "type": "statistics-graph",
+                            "entities": [
+                                "sensor.energy_solar_pv_in"
+                            ],
+                            "days_to_show": 90,
+                            "chart_type": "line",
+                            "stat_types": [
+                                "mean",
+                                "sum",
+                                "max",
+                                "min"
+                            ],
+                            "title": "Solar PV In",
+                            "view_layout": {
+                                "position": "sidebar"
+                            }
+                        },
+                        {
+                            "type": "statistics-graph",
+                            "entities": [
+                                "sensor.hallway_temperature"
+                            ],
+                            "days_to_show": 60,
+                            "stat_types": [
+                                "mean",
+                                "min",
+                                "max"
+                            ],
+                            "title": "Temp Sensors",
+                            "view_layout": {
+                                "position": "main"
+                            }
+                        },
+                        {
+                            "type": "statistics-graph",
+                            "entities": [
+                                "sensor.energy_electric_total_usage_hourly_peak"
+                            ],
+                            "days_to_show": 30,
+                            "chart_type": "bar",
+                            "stat_types": [
+                                "mean",
+                                "min",
+                                "max",
+                                "sum"
+                            ],
+                            "view_layout": {
+                                "position": "sidebar"
+                            }
+                        },
+                        {
+                            "type": "statistics-graph",
+                            "entities": [
+                                "sensor.energy_gas_total_usage_hourly_peak"
+                            ],
+                            "days_to_show": 30,
+                            "title": "Gas usage",
+                            "view_layout": {
+                                "position": "sidebar"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "title": "Test",
+                    "path": "test",
+                    "badges": [],
+                    "cards": [
+                        {
+                            "type": "entities",
+                            "entities": [
+                                "switch.trv_roof_auto_lock",
+                                "switch.trv_roof_away_mode",
+                                "sensor.trv_roof_away_preset_days",
+                                "sensor.trv_roof_away_preset_temperature",
+                                "binary_sensor.trv_roof_battery_low",
+                                "sensor.trv_roof_boost_time",
+                                "lock.trv_roof_child_lock",
+                                "sensor.trv_roof_comfort_temperature",
+                                "sensor.trv_roof_eco_temperature",
+                                "select.trv_roof_force",
+                                "sensor.trv_roof_max_temperature",
+                                "sensor.trv_roof_min_temperature",
+                                "sensor.trv_roof_position",
+                                "switch.trv_roof_valve_detection",
+                                "select.trv_roof_week",
+                                "switch.trv_roof_window_detection"
+                            ]
+                        },
+                        {
+                            "type": "thermostat",
+                            "entity": "climate.trv_roof"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "sensor.memory_use"
+                                },
+                                {
+                                    "entity": "sensor.memory_free"
+                                },
+                                {
+                                    "entity": "sensor.disk_use_percent_config"
+                                },
+                                {
+                                    "entity": "sensor.processor_use_percent"
+                                },
+                                {
+                                    "entity": "sensor.load_1m"
+                                },
+                                {
+                                    "entity": "sensor.load_5m"
+                                },
+                                {
+                                    "entity": "sensor.load_15m"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}
