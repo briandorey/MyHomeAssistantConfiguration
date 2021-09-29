@@ -1270,6 +1270,16 @@
                                             "icon": "mdi:washing-machine"
                                         },
                                         {
+                                            "entity": "sensor.tumble_dryer_power",
+                                            "name": "Tumble Dryer",
+                                            "icon": "mdi:washing-machine"
+                                        },
+                                        {
+                                            "entity": "sensor.kitchen_fridge_power",
+                                            "name": "Kitchen Fridge Freezer",
+                                            "icon": "mdi:fridge"
+                                        },
+                                        {
                                             "entity": "sensor.networkcupboard_current_consumption",
                                             "name": "Network Cupboard",
                                             "icon": "mdi:server-network"
@@ -1373,6 +1383,42 @@
                                                 },
                                                 {
                                                     "entity": "sensor.washing_machine_total_power",
+                                                    "name": "Total"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "entity": "sensor.kitchen_fridge_today_power",
+                                            "type": "custom:multiple-entity-row",
+                                            "name": "Kitchen Fridge Freezer",
+                                            "icon": "mdi:fridge",
+                                            "show_state": false,
+                                            "secondary_info": "last-changed",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.kitchen_fridge_today_power",
+                                                    "name": "Today"
+                                                },
+                                                {
+                                                    "entity": "sensor.kitchen_fridge_total_power",
+                                                    "name": "Total"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "entity": "sensor.tumble_dryer_today_power",
+                                            "type": "custom:multiple-entity-row",
+                                            "name": "Tumble Dryer",
+                                            "icon": "mdi:washing-machine",
+                                            "show_state": false,
+                                            "secondary_info": "last-changed",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.tumble_dryer_today_power",
+                                                    "name": "Today"
+                                                },
+                                                {
+                                                    "entity": "sensor.tumble_dryer_total_power",
                                                     "name": "Total"
                                                 }
                                             ]

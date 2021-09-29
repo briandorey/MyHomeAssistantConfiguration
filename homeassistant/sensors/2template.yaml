@@ -149,7 +149,30 @@
       unit_of_measurement: 'kWh'
       value_template: "{{ states('sensor.washing_machine_total_power') }}"
       icon_template: mdi:mdi-current-ac
-    
+      
+- platform: template
+  sensors:  
+    main_kitchentumbledryer_energy:
+      device_class: energy
+      friendly_name: "Energy Tumble Dryer"
+      attribute_templates:
+        state_class: total_increasing
+        device_class: energy
+      unit_of_measurement: 'kWh'
+      value_template: "{{ states('sensor.tumble_dryer_total_power') }}"
+      icon_template: mdi:mdi-current-ac
+      
+- platform: template
+  sensors:  
+    main_kitchenfridgefreezer_energy:
+      device_class: energy
+      friendly_name: "Energy Fridge Freezer"
+      attribute_templates:
+        state_class: total_increasing
+        device_class: energy
+      unit_of_measurement: 'kWh'
+      value_template: "{{ states('sensor.kitchen_fridge_total_power') }}"
+      icon_template: mdi:mdi-current-ac      
 #    
 #- platform: template
 #  sensors:
@@ -207,15 +230,17 @@
       friendly_name: "Metered Devices"
       unit_of_measurement: 'W'
       icon_template: mdi:speedometer
-      value_template: "{{ (states('sensor.nasupspowerwatts') | float + 
-            states('sensor.powerandpctv_power') | float +
-            states('sensor.powerlivingroomtvsocket_power') | float + 
-            states('sensor.powerbriantv_power') | float + 
-            states('sensor.nasupspowerwatts') | float + 
-            states('sensor.smartplugbrianpc_current_consumption') | float +
-            states('sensor.ovenandpump_power') | float +
-            states('sensor.workbench_power') | float +
-      states('sensor.washing_machine_power') | float) | round(2) }}" 
+      value_template: "{{ (states('sensor.smartplugbrianpc_current_consumption') | float + 
+        states('sensor.powerbriantv_power') | float + 
+        states('sensor.powerandpctv_power') | float + 
+        states('sensor.powerlivingroomtvsocket_power') | float + 
+        states('sensor.washing_machine_power') | float + 
+        states('sensor.tumble_dryer_power') | float + 
+        states('sensor.kitchen_fridge_power') | float + 
+        states('sensor.networkcupboard_current_consumption') | float + 
+        states('sensor.nasupspowerwatts') | float + 
+        states('sensor.ovenandpump_power') | float + 
+        states('sensor.workbench_power') | float) | round(2) }}" 
     
 - platform: template
   sensors:

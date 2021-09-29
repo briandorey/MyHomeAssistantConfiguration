@@ -220,7 +220,18 @@ recorder:
       - sensor.ovenandpump_power
       - sensor.workbench_power
       - sensor.processor_use_percent
-      - sensor.load_5m
+      - sensor.load_5m      
+      - sensor.kitchen_fridge_current
+      - sensor.kitchen_fridge_power
+      - sensor.kitchen_fridge_today_power
+      - sensor.kitchen_fridge_total_power
+      - sensor.tumble_dryer_current
+      - sensor.tumble_dryer_power
+      - sensor.tumble_dryer_today_power
+      - sensor.tumble_dryer_total_power
+      - sensor.main_kitchenfridgefreezer_energy
+      - sensor.main_kitchentumbledryer_energy
+      
 apcupsd:
   host: !secret apcupsd
   port: 3551

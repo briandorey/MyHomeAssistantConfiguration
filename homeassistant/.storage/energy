@@ -57,6 +57,12 @@
             },
             {
                 "stat_consumption": "sensor.energy_shelly_oven"
+            },
+            {
+                "stat_consumption": "sensor.main_kitchentumbledryer_energy"
+            },
+            {
+                "stat_consumption": "sensor.main_kitchenfridgefreezer_energy"
             }
         ]
     }
