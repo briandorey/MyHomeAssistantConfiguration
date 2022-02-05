@@ -13,20 +13,23 @@ More information about my various smart home and automation projects can be foun
 * [Button Card](https://github.com/custom-cards/button-card)
 * [lovelace-multiple-entity-row](https://github.com/benct/lovelace-multiple-entity-row)
 * [mini-graph-card](https://github.com/kalkih/mini-graph-card)
+* [sidebar-card](https://github.com/DBuit/sidebar-card)
+
+
 
 ## Screenshots
 
 ![overview](/screenshots/overview.png)
-![electric monitoring](/screenshots/electricmonitoring.png)
+![electric usage](/screenshots/electric-usage.png)
+![home energy](/screenshots/home-energy.png)
 ![floorplan](/screenshots/floorplan.png)
-![loft](/screenshots/loft.png)
+![kitchen](/screenshots/kitchen.png)
+![loft-power](/screenshots/loft-power.png)
 ![media](/screenshots/media.png)
-![nas](/screenshots/nas.png)
-![Solar PV](/screenshots/solar.png)
-![stats](/screenshots/stats.png)
-![temp-sensors](/screenshots/temp-sensors.png)
-![ups](/screenshots/ups.png)
-![washing-machine](/screenshots/washing-machine.png)
+![network storage](/screenshots/network-storage.png)
+![Solar PV](/screenshots/solar-pv.png)
+![rooms](/screenshots/rooms.png)
+![statistics](/screenshots/statistics.png)
 
 ## License
 Distributed under the MIT License. See `LICENSE` for more information.
