@@ -1,5 +1,6 @@
 {
     "version": 1,
+    "minor_version": 1,
     "key": "lovelace_resources",
     "data": {
         "items": [
@@ -17,6 +18,11 @@
                 "url": "/local/button-card.js",
                 "type": "module",
                 "id": "0b6665914f2742518fdf94b3e73bd8bd"
+            },
+            {
+                "url": "/local/sidebar-card.js?v=0.0.1",
+                "type": "module",
+                "id": "114e461179304811870224aa60083b05"
             }
         ]
     }

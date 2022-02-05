@@ -1,14 +1,13 @@
 - alias: 'Brian TV Auto Off'
   trigger:
     - platform: numeric_state
-      entity_id: sensor.powerbriantv_power
-      attribute: power
+      entity_id: sensor.tplinkbriantv_current_consumption
       below: '30'
-      for: '00:20:00'
+      for: '00:05:00'
   condition: []
   action:
   - type: turn_off
-    device_id: 5802bfd520fa5234fe77a926d7ae75c4
-    entity_id: switch.powerbriantv
+    device_id: 70ce7f6ebfd4dd9355e91efd24b2654c
+    entity_id: switch.tplinkbriantv
     domain: switch
   mode: single

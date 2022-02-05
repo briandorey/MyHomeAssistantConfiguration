@@ -61,8 +61,8 @@
   condition: []
   action:
   - type: turn_on
-    device_id: 5802bfd520fa5234fe77a926d7ae75c4
-    entity_id: switch.powerbriantv
+    device_id: 70ce7f6ebfd4dd9355e91efd24b2654c
+    entity_id: switch.tplinkbriantv
     domain: switch
   mode: single
 - id: '1621609091966'
@@ -74,8 +74,8 @@
   condition: []
   action:
   - type: turn_off
-    device_id: 5802bfd520fa5234fe77a926d7ae75c4
-    entity_id: switch.powerbriantv
+    device_id: 70ce7f6ebfd4dd9355e91efd24b2654c
+    entity_id: switch.tplinkbriantv
     domain: switch
   mode: single
 - id: '1621613040214'
@@ -117,8 +117,8 @@
   condition: []
   action:
   - type: toggle
-    device_id: 5802bfd520fa5234fe77a926d7ae75c4
-    entity_id: switch.powerbriantv
+    device_id: 70ce7f6ebfd4dd9355e91efd24b2654c
+    entity_id: switch.tplinkbriantv
     domain: switch
   mode: single
 - id: '1623689339982'
@@ -156,13 +156,13 @@
   trigger:
   - platform: numeric_state
     entity_id: sensor.washing_machine_power
-    above: 10
+    above: '10'
   condition: []
   action:
   - wait_for_trigger:
     - platform: numeric_state
       entity_id: sensor.washing_machine_power
-      below: 5
+      below: '5'
       for: 00:02:00
     continue_on_timeout: false
   - service: notify.mobile_app_brian_iphone

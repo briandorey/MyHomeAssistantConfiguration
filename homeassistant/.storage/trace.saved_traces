@@ -1,0 +1,181 @@
+{
+    "version": 1,
+    "minor_version": 1,
+    "key": "trace.saved_traces",
+    "data": {
+        "automation.1630839496641": [
+            {
+                "extended_dict": {
+                    "last_step": "action/0",
+                    "run_id": "8b1448ab4944039858b64ea8a033a19c",
+                    "state": "stopped",
+                    "script_execution": "finished",
+                    "timestamp": {
+                        "start": "2022-02-02T21:45:30.503278+00:00",
+                        "finish": "2022-02-02T21:45:30.542223+00:00"
+                    },
+                    "domain": "automation",
+                    "item_id": "1630839496641",
+                    "trigger": "state of binary_sensor.switchlofthatch_contact",
+                    "trace": {
+                        "trigger/0": [
+                            {
+                                "path": "trigger/0",
+                                "timestamp": "2022-02-02T21:45:30.503422+00:00",
+                                "changed_variables": {
+                                    "this": {
+                                        "entity_id": "automation.test",
+                                        "state": "on",
+                                        "attributes": {
+                                            "last_triggered": "2022-02-02T21:30:48.196178+00:00",
+                                            "mode": "single",
+                                            "current": 0,
+                                            "id": "1630839496641",
+                                            "friendly_name": "Loft TRV Set Hatch Open"
+                                        },
+                                        "last_changed": "2022-02-02T21:44:45.526428+00:00",
+                                        "last_updated": "2022-02-02T21:44:45.526428+00:00",
+                                        "context": {
+                                            "id": "e174aa5af0cf2e4c3201492ee472d6af",
+                                            "parent_id": null,
+                                            "user_id": null
+                                        }
+                                    },
+                                    "trigger": {
+                                        "id": "0",
+                                        "idx": "0",
+                                        "platform": "device",
+                                        "entity_id": "binary_sensor.switchlofthatch_contact",
+                                        "from_state": {
+                                            "entity_id": "binary_sensor.switchlofthatch_contact",
+                                            "state": "off",
+                                            "attributes": {
+                                                "battery": 82.5,
+                                                "battery_low": false,
+                                                "contact": false,
+                                                "linkquality": 127,
+                                                "tamper": false,
+                                                "voltage": 2900,
+                                                "device_class": "door",
+                                                "friendly_name": "SwitchLoftHatch contact"
+                                            },
+                                            "last_changed": "2022-02-02T21:44:50.556614+00:00",
+                                            "last_updated": "2022-02-02T21:45:30.328071+00:00",
+                                            "context": {
+                                                "id": "67b2c6d5e0668c553a231bb1596452ad",
+                                                "parent_id": null,
+                                                "user_id": null
+                                            }
+                                        },
+                                        "to_state": {
+                                            "entity_id": "binary_sensor.switchlofthatch_contact",
+                                            "state": "on",
+                                            "attributes": {
+                                                "battery": 82.5,
+                                                "battery_low": false,
+                                                "contact": false,
+                                                "linkquality": 127,
+                                                "tamper": false,
+                                                "voltage": 2900,
+                                                "device_class": "door",
+                                                "friendly_name": "SwitchLoftHatch contact"
+                                            },
+                                            "last_changed": "2022-02-02T21:45:30.329417+00:00",
+                                            "last_updated": "2022-02-02T21:45:30.329417+00:00",
+                                            "context": {
+                                                "id": "a94b64cd2c9576d8ff35f96fe91db065",
+                                                "parent_id": null,
+                                                "user_id": null
+                                            }
+                                        },
+                                        "for": null,
+                                        "attribute": null,
+                                        "description": "state of binary_sensor.switchlofthatch_contact"
+                                    }
+                                }
+                            }
+                        ],
+                        "action/0": [
+                            {
+                                "path": "action/0",
+                                "timestamp": "2022-02-02T21:45:30.516329+00:00",
+                                "changed_variables": {
+                                    "context": {
+                                        "id": "fe6189995ae4a765bba072346cd58a08",
+                                        "parent_id": "a94b64cd2c9576d8ff35f96fe91db065",
+                                        "user_id": null
+                                    }
+                                },
+                                "result": {
+                                    "params": {
+                                        "domain": "climate",
+                                        "service": "set_temperature",
+                                        "service_data": {
+                                            "temperature": 20,
+                                            "entity_id": [
+                                                "climate.trv_roof"
+                                            ]
+                                        },
+                                        "target": {
+                                            "entity_id": [
+                                                "climate.trv_roof"
+                                            ]
+                                        }
+                                    },
+                                    "running_script": false,
+                                    "limit": 10
+                                }
+                            }
+                        ]
+                    },
+                    "config": {
+                        "id": "1630839496641",
+                        "alias": "Loft TRV Set Hatch Open",
+                        "description": "",
+                        "trigger": [
+                            {
+                                "type": "opened",
+                                "platform": "device",
+                                "device_id": "e877dc500f9f404ccb4f1687ba2d9c5b",
+                                "entity_id": "binary_sensor.switchlofthatch_contact",
+                                "domain": "binary_sensor"
+                            }
+                        ],
+                        "condition": [],
+                        "action": [
+                            {
+                                "service": "climate.set_temperature",
+                                "target": {
+                                    "entity_id": "climate.trv_roof"
+                                },
+                                "data": {
+                                    "temperature": 20
+                                }
+                            }
+                        ],
+                        "mode": "single"
+                    },
+                    "blueprint_inputs": null,
+                    "context": {
+                        "id": "fe6189995ae4a765bba072346cd58a08",
+                        "parent_id": "a94b64cd2c9576d8ff35f96fe91db065",
+                        "user_id": null
+                    }
+                },
+                "short_dict": {
+                    "last_step": "action/0",
+                    "run_id": "8b1448ab4944039858b64ea8a033a19c",
+                    "state": "stopped",
+                    "script_execution": "finished",
+                    "timestamp": {
+                        "start": "2022-02-02T21:45:30.503278+00:00",
+                        "finish": "2022-02-02T21:45:30.542223+00:00"
+                    },
+                    "domain": "automation",
+                    "item_id": "1630839496641",
+                    "trigger": "state of binary_sensor.switchlofthatch_contact"
+                }
+            }
+        ]
+    }
+}

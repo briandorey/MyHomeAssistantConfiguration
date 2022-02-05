@@ -1,0 +1,103 @@
+- platform: apcupsd
+  resources:
+    - apc
+    - date
+    - hostname
+    - version
+    - upsname
+    - cable
+    - driver
+    - upsmode
+    - starttime
+    - model
+    - status
+    - linev
+    - loadpct
+    - bcharge
+    - timeleft
+    - mbattchg
+    - mintimel
+    - maxtime
+    - nompower
+ 
+ 
+ 
+- platform: snmp
+  host: !secret wifi
+  community: public
+  name: WiFi
+  baseoid: 1.3.6.1.4.1.11863.10.1.1.1.0
+  unit_of_measurement: 'Devices'
+  scan_interval: 60
+  
+  
+- platform: snmp
+  host: !secret firewall
+  community: firewallsnmpservice
+  scan_interval: 30
+  name: Firewall Uptime
+  baseoid: 1.3.6.1.2.1.25.1.1.0
+  value_template: >-
+    {% set uptime = (value | int) / 100 | int %}
+    {% set days = (uptime / 86400) | int %}
+    {%- if days > 0 -%}
+    {{ days }} days, {{ (uptime - (days * 86400)) | int | timestamp_custom('%H:%M:%S') }}
+    {%- else -%}
+    {{ uptime | int | timestamp_custom('%H:%M:%S') }}
+    {%- endif -%}   
+
+#- platform: integration
+#  source: sensor.electrictokwh
+#  name: energy_spent
+#  unit_prefix: 'k'
+#  method: left
+#  round: 2
+  
+ 
+#- platform: integration
+#  source: sensor.powerandpctv_energy
+#  name: energyusageandrewtv
+#  unit_prefix: k
+#  round: 2 
+
+- platform: history_stats
+  name: Back Door Open Today
+  entity_id: binary_sensor.backdoor_contact
+  state: 'on'
+  type: time
+  start: '{{ now().replace(hour=0, minute=0, second=0) }}'
+  end: '{{ now() }}'
+  
+- platform: history_stats
+  name: Front Door Open Today
+  entity_id: binary_sensor.frontdoor_contact
+  state: 'on'
+  type: time
+  start: '{{ now().replace(hour=0, minute=0, second=0) }}'
+  end: '{{ now() }}'
+  
+- platform: history_stats
+  name: Solar Pump Running Today
+  entity_id: binary_sensor.solar_water_pump
+  state: 'on'
+  type: time
+  start: '{{ now().replace(hour=0, minute=0, second=0) }}'
+  end: '{{ now() }}'
+  
+- platform: statistics
+  name: statsnetwork
+  entity_id: sensor.networkcupboard_current_consumption  
+  state_characteristic: mean
+  max_age:
+    hours: 24
+
+- platform: systemmonitor
+  resources:
+    - type: disk_use_percent
+      arg: /config
+    - type: memory_free
+    - type: processor_use
+    - type: memory_use
+    - type: load_1m
+    - type: load_5m
+    - type: load_15m

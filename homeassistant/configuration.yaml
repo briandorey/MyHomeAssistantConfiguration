@@ -1,6 +1,8 @@
 homeassistant:
   customize: !include customize.yaml
   customize_glob: !include customize_glob.yaml
+  media_dirs:
+    media: /media
 # Configure a default setup of Home Assistant (frontend, api, etc)
 # ssdp:
 
@@ -40,14 +42,12 @@ tts:
     base_url: !secret ttsbaseurl
     service_name: google_say
 # Example configuration.yaml entry with manually specified Sonos IP addresses
-sonos:
-  media_player:
-    advertise_addr: !secret sonosadvertiseaddr
-    hosts:
-      - !secret sonosplayer1
-      - !secret sonosplayer2
-      - !secret sonosplayer3
-      - !secret sonosplayer4
+#sonos:
+#  media_player:
+#    advertise_addr: !secret sonosadvertiseaddr
+#    hosts:
+#      - !secret sonosplayer2
+#      - !secret sonosplayer4
       
 group: !include groups.yaml
 
@@ -59,12 +59,17 @@ sensor: !include_dir_merge_list sensors/
 utility_meter: !include utility_meter.yaml
 binary_sensor:  !include binarysensor.yaml  
 
+
+
+
+
 discovery:
-tplink:
-  discovery: true
-  switch:
-    - host: !secret tplinkswitch1
-    - host: !secret tplinkswitch2
+# tplink:
+#   discovery: true
+#   switch:
+#     - host: !secret tplinkswitch1
+#     - host: !secret tplinkswitch2
+#     - host: !secret tplinkswitch3
     
 wake_on_lan:
 
@@ -160,8 +165,8 @@ recorder:
       - sensor.powerlivingroomtvsocket_energy
       - sensor.powerandpctv_energy
       - sensor.powerandpctv_power
-      - sensor.powerbriantv_energy
-      - sensor.powerbriantv_power
+      - sensor.tplinkbriantv_current_consumption
+      - sensor.tplinkbriantv_current_consumption
       - sensor.powerlivingroomtvsocket_energy
       - sensor.powerlivingroomtvsocket_power
       - sensor.shelly_loft_ovenandpump_current_draw
@@ -231,6 +236,9 @@ recorder:
       - sensor.tumble_dryer_total_power
       - sensor.main_kitchenfridgefreezer_energy
       - sensor.main_kitchentumbledryer_energy
+      - sensor.trv_roof_position
+      - binary_sensor.trv_roof_battery_low
+      - sensor.gastocubicmeter_cost
       
 apcupsd:
   host: !secret apcupsd
@@ -256,12 +264,12 @@ notify:
     filename: /config/www/entity_log.txt
     timestamp: false
 stream:
-camera:
-  - platform: generic
-    still_image_url: !secret cameraurl
-    stream_source: !secret camerasource
-    name: CAMERA_NAME
-    verify_ssl: false
-    authentication: basic
-    username: !secret camerausername
-    password: !secret camerapassword
+# camera:
+#   - platform: generic
+#     still_image_url: !secret cameraurl
+#     stream_source: !secret camerasource
+#     name: CAMERA_NAME
+#     verify_ssl: false
+#     authentication: basic
+#     username: !secret camerausername
+#     password: !secret camerapassword

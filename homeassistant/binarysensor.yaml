@@ -7,7 +7,7 @@
       delay_off:
         minutes: 6
       value_template: >-
-        {{ states('sensor.washing_machine_power')|float > 25 }}
+        {{ (states('sensor.washing_machine_power')|float(0)) > 25 }}
       icon_template: mdi:tumble-dryer
 - platform: mqtt
   state_topic: "/home/water/solarpump"

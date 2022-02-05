@@ -1,51 +1,48 @@
 {
     "version": 1,
+    "minor_version": 1,
     "key": "core.area_registry",
     "data": {
         "areas": [
             {
                 "name": "Living Room",
-                "id": "1c70b71e024311eb8472197d42596ea7"
+                "id": "1c70b71e024311eb8472197d42596ea7",
+                "picture": null
             },
             {
                 "name": "Kitchen",
-                "id": "1c70d0e5024311ebbe3c3fac26e55e76"
-            },
-            {
-                "name": "Bedroom",
-                "id": "1c70e506024311ebb2cd71a946402e20"
+                "id": "1c70d0e5024311ebbe3c3fac26e55e76",
+                "picture": null
             },
             {
                 "name": "Shed",
-                "id": "c8dd424c024511ebb7d149981874f4e1"
-            },
-            {
-                "name": "Brian Room",
-                "id": "fde63048030c11eb9de9fb6580b8e2bf"
+                "id": "c8dd424c024511ebb7d149981874f4e1",
+                "picture": null
             },
             {
                 "name": "Andrew Bedroom",
-                "id": "e825136c031a11eb8fa637464a56413c"
-            },
-            {
-                "name": "Loft Workshop",
-                "id": "139b823d034c11eb951223af86e40696"
+                "id": "e825136c031a11eb8fa637464a56413c",
+                "picture": null
             },
             {
                 "name": "Hallway",
-                "id": "203e0859089b11ebaa2c931d8088950a"
+                "id": "203e0859089b11ebaa2c931d8088950a",
+                "picture": null
             },
             {
                 "name": "Garden",
-                "id": "garden"
+                "id": "garden",
+                "picture": null
             },
             {
                 "name": "Brian Bedroom",
-                "id": "brian_bedroom"
+                "id": "brian_bedroom",
+                "picture": null
             },
             {
                 "name": "Loft",
-                "id": "loft"
+                "id": "loft",
+                "picture": null
             }
         ]
     }
