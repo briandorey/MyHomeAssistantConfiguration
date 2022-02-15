@@ -4,103 +4,6 @@
     "key": "lovelace",
     "data": {
         "config": {
-            "sidebar": {
-                "hideTopMenu": true,
-                "hideHassSidebar": true,
-                "showTopMenuOnMobile": true,
-                "width": {
-                    "mobile": 0,
-                    "tablet": 25,
-                    "desktop": 20
-                },
-                "sidebarMenu": [
-                    {
-                        "action": "navigate",
-                        "navigation_path": "/lovelace/home",
-                        "name": "Home",
-                        "icon": "mdi:home",
-                        "active": true
-                    },
-                    {
-                        "action": "navigate",
-                        "navigation_path": "/lovelace/home-energy",
-                        "name": "Energy",
-                        "icon": "mdi:power"
-                    },
-                    {
-                        "action": "navigate",
-                        "navigation_path": "/lovelace/rooms",
-                        "name": "Rooms",
-                        "icon": "mdi:home-thermometer"
-                    },
-                    {
-                        "action": "navigate",
-                        "navigation_path": "/lovelace/solar-pv",
-                        "name": "Solar Generation",
-                        "icon": "mdi:solar-panel"
-                    },
-                    {
-                        "action": "navigate",
-                        "navigation_path": "/lovelace/electric-usage",
-                        "name": "Power Usage",
-                        "icon": "mdi:lightning-bolt"
-                    },
-                    {
-                        "action": "navigate",
-                        "navigation_path": "/lovelace/network-storage",
-                        "name": "Network",
-                        "icon": "mdi:nas"
-                    },
-                    {
-                        "action": "navigate",
-                        "navigation_path": "/lovelace/kitchen",
-                        "name": "Kitchen",
-                        "icon": "mdi:washing-machine"
-                    },
-                    {
-                        "action": "navigate",
-                        "navigation_path": "/lovelace/loft-power",
-                        "name": "Loft",
-                        "icon": "mdi:home-roof"
-                    },
-                    {
-                        "action": "navigate",
-                        "navigation_path": "/lovelace/floorplan",
-                        "name": "Floorplan",
-                        "icon": "mdi:floor-plan"
-                    },
-                    {
-                        "action": "navigate",
-                        "navigation_path": "/lovelace/media",
-                        "name": "Media Players",
-                        "icon": "mdi:speaker"
-                    },
-                    {
-                        "action": "navigate",
-                        "navigation_path": "/lovelace/statistics",
-                        "name": "Statistics",
-                        "icon": "mdi:chart-arc"
-                    },
-                    {
-                        "action": "navigate",
-                        "navigation_path": "/lovelace/0?edit=1&sidebarOff=",
-                        "name": "Edit Dashboard",
-                        "icon": "mdi:pencil"
-                    },
-                    {
-                        "action": "navigate",
-                        "navigation_path": "/developer-tools/state?sidebarOff=",
-                        "name": "Dev Tools",
-                        "icon": "mdi:hammer"
-                    },
-                    {
-                        "action": "navigate",
-                        "navigation_path": "/config/dashboard?sidebarOff=",
-                        "name": "Configuration",
-                        "icon": "mdi:cog"
-                    }
-                ]
-            },
             "views": [
                 {
                     "title": "Home",
@@ -540,608 +443,136 @@
                     ]
                 },
                 {
-                    "title": "Rooms",
-                    "path": "rooms",
-                    "icon": "mdi:home-thermometer",
+                    "title": "Home Energy",
+                    "path": "home-energy",
+                    "icon": "mdi:power",
+                    "type": "sidebar",
                     "badges": [],
                     "cards": [
                         {
-                            "type": "vertical-stack",
-                            "title": "Downstairs",
+                            "type": "energy-date-selection"
+                        },
+                        {
+                            "type": "horizontal-stack",
                             "cards": [
                                 {
-                                    "type": "horizontal-stack",
-                                    "cards": [
-                                        {
-                                            "type": "custom:mini-graph-card",
-                                            "entities": [
-                                                {
-                                                    "entity": "sensor.tempbrian_temperature",
-                                                    "name": "Brian Bedroom"
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "type": "custom:mini-graph-card",
-                                            "entities": [
-                                                {
-                                                    "entity": "sensor.tempbrian_humidity",
-                                                    "name": "Humidity",
-                                                    "color": "lightblue"
-                                                }
-                                            ]
-                                        }
-                                    ]
+                                    "type": "energy-usage-graph",
+                                    "title": "Electricity"
                                 },
                                 {
-                                    "type": "horizontal-stack",
-                                    "cards": [
-                                        {
-                                            "type": "custom:mini-graph-card",
-                                            "entities": [
-                                                {
-                                                    "entity": "sensor.templivingroom_temperature",
-                                                    "name": "Living Room"
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "type": "custom:mini-graph-card",
-                                            "entities": [
-                                                {
-                                                    "entity": "sensor.templivingroom_humidity",
-                                                    "name": "Humidity",
-                                                    "color": "lightblue"
-                                                }
-                                            ]
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "horizontal-stack",
-                                    "cards": [
-                                        {
-                                            "type": "custom:mini-graph-card",
-                                            "entities": [
-                                                {
-                                                    "entity": "sensor.tempkitchen_temperature",
-                                                    "name": "Kitchen"
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "type": "custom:mini-graph-card",
-                                            "entities": [
-                                                {
-                                                    "entity": "sensor.tempkitchen_humidity",
-                                                    "name": "Humidity",
-                                                    "color": "lightblue"
-                                                }
-                                            ]
-                                        }
-                                    ]
+                                    "type": "energy-gas-graph",
+                                    "title": "Gas"
                                 }
                             ]
                         },
                         {
-                            "type": "vertical-stack",
-                            "title": "Upstairs",
+                            "type": "horizontal-stack",
                             "cards": [
                                 {
-                                    "type": "horizontal-stack",
-                                    "cards": [
-                                        {
-                                            "type": "custom:mini-graph-card",
-                                            "entities": [
-                                                {
-                                                    "entity": "sensor.tempandrew_temperature",
-                                                    "name": "Andrew Bedroom"
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "type": "custom:mini-graph-card",
-                                            "entities": [
-                                                {
-                                                    "entity": "sensor.tempandrew_humidity",
-                                                    "name": "Humidity",
-                                                    "color": "lightblue"
-                                                }
-                                            ]
-                                        }
-                                    ]
+                                    "type": "energy-solar-graph",
+                                    "title": "Solar Generated"
                                 },
                                 {
-                                    "type": "horizontal-stack",
-                                    "cards": [
-                                        {
-                                            "type": "custom:mini-graph-card",
-                                            "entities": [
-                                                {
-                                                    "entity": "sensor.tempnetworkcupboard_temperature",
-                                                    "name": "Network Temperature"
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "type": "custom:mini-graph-card",
-                                            "entities": [
-                                                {
-                                                    "entity": "sensor.tempandrew_pressure",
-                                                    "name": "Pressure",
-                                                    "color": "lightblue"
-                                                }
-                                            ]
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "horizontal-stack",
-                                    "cards": [
-                                        {
-                                            "type": "custom:mini-graph-card",
-                                            "entities": [
-                                                {
-                                                    "entity": "sensor.tempmumbedroom_temperature",
-                                                    "name": "Mum/Dad Bedroom"
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "type": "custom:mini-graph-card",
-                                            "entities": [
-                                                {
-                                                    "entity": "sensor.bathroom_temperature",
-                                                    "name": "Bathroom"
-                                                }
-                                            ]
-                                        }
-                                    ]
+                                    "type": "energy-distribution",
+                                    "link_dashboard": true,
+                                    "title": "Overview"
                                 }
-                            ]
+                            ],
+                            "view_layout": {
+                                "position": "main"
+                            }
                         },
                         {
-                            "type": "vertical-stack",
-                            "title": "Other Locations",
+                            "type": "horizontal-stack",
                             "cards": [
                                 {
-                                    "type": "horizontal-stack",
-                                    "cards": [
-                                        {
-                                            "type": "custom:mini-graph-card",
-                                            "entities": [
-                                                {
-                                                    "entity": "sensor.temploft_temperature",
-                                                    "name": "Loft"
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "type": "custom:mini-graph-card",
-                                            "entities": [
-                                                {
-                                                    "entity": "sensor.temploft_humidity",
-                                                    "name": "Humidity",
-                                                    "color": "lightblue"
-                                                }
-                                            ]
-                                        }
-                                    ]
+                                    "type": "energy-sources-table",
+                                    "title": "Sources"
                                 },
                                 {
-                                    "type": "horizontal-stack",
-                                    "cards": [
-                                        {
-                                            "type": "custom:mini-graph-card",
-                                            "entities": [
-                                                {
-                                                    "entity": "sensor.hallway_temperature",
-                                                    "name": "Hallway"
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "type": "custom:mini-graph-card",
-                                            "entities": [
-                                                {
-                                                    "entity": "sensor.hallway_humidity",
-                                                    "name": "Humidity",
-                                                    "color": "lightblue"
-                                                }
-                                            ]
-                                        }
-                                    ]
-                                },
-                                {
-                                    "type": "horizontal-stack",
-                                    "cards": [
-                                        {
-                                            "type": "custom:mini-graph-card",
-                                            "entities": [
-                                                {
-                                                    "entity": "sensor.temploftwater_temperature",
-                                                    "name": "Loft Water Tank Air"
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "type": "custom:mini-graph-card",
-                                            "entities": [
-                                                {
-                                                    "entity": "sensor.temploftwater_humidity",
-                                                    "name": "Humidity",
-                                                    "color": "lightblue"
-                                                }
-                                            ]
-                                        }
-                                    ]
+                                    "type": "energy-devices-graph",
+                                    "title": "Devices"
                                 }
                             ]
+                        }
+                    ]
+                },
+                {
+                    "title": "Solar PV",
+                    "path": "solar-pv",
+                    "icon": "mdi:solar-panel",
+                    "badges": [],
+                    "cards": [
+                        {
+                            "type": "sensor",
+                            "entity": "sensor.solarpv_gridpower",
+                            "graph": "line",
+                            "hours_to_show": 48
                         },
                         {
                             "type": "entities",
                             "entities": [
                                 {
-                                    "entity": "sensor.backdoor_battery",
-                                    "name": "Back Door"
+                                    "entity": "sensor.solarpv_panel_volts",
+                                    "secondary_info": "last-changed"
                                 },
                                 {
-                                    "entity": "sensor.frontdoor_battery",
-                                    "name": "Front Door"
+                                    "entity": "sensor.solarpv_panel_amps"
                                 },
                                 {
-                                    "entity": "sensor.loft_window_one_battery",
-                                    "name": "Loft Left Window"
+                                    "entity": "sensor.solarpv_gridpower"
                                 },
                                 {
-                                    "entity": "sensor.loftwindowright_battery",
-                                    "name": "Loft Right Window"
+                                    "entity": "sensor.solarpv_inverter_temp"
                                 },
                                 {
-                                    "entity": "sensor.tempandrew_battery",
-                                    "name": "Andrew Temp Sensor"
-                                },
-                                {
-                                    "entity": "sensor.tempbrian_battery",
-                                    "name": "Brian Temp Sensor"
-                                },
-                                {
-                                    "entity": "sensor.tempoutdoorwindow_battery",
-                                    "name": "Garden Temp Sensor"
-                                },
-                                {
-                                    "entity": "sensor.tempkitchen_battery",
-                                    "name": "Kitchen Temp Sensor"
-                                },
-                                {
-                                    "entity": "sensor.hallway_battery",
-                                    "name": "Hallway"
-                                },
-                                {
-                                    "entity": "sensor.templivingroom_battery",
-                                    "name": "Living Room  Temp Sensor"
-                                },
-                                {
-                                    "entity": "sensor.temploft_battery",
-                                    "name": "Loft Battery"
-                                },
-                                {
-                                    "entity": "sensor.tempnetworkcupboard_battery",
-                                    "name": "Network Cupboard Battery"
-                                },
-                                {
-                                    "entity": "sensor.tempmumbedroom_battery",
-                                    "name": "Mum / Dad Bedroom Battery"
-                                },
-                                {
-                                    "entity": "sensor.switchlofthatch_battery",
-                                    "name": "Loft Hatch Battery"
-                                },
-                                {
-                                    "entity": "sensor.temploftwater_battery"
+                                    "entity": "sensor.solarpv_totalgenerated",
+                                    "secondary_info": "last-changed"
                                 }
                             ],
-                            "title": "Battery Status"
-                        }
-                    ]
-                },
-                {
-                    "title": "Network Storage",
-                    "path": "network-storage",
-                    "icon": "mdi:nas",
-                    "type": "panel",
-                    "badges": [],
-                    "cards": [
+                            "title": "Inverter"
+                        },
                         {
-                            "type": "vertical-stack",
-                            "title": "Network Devices",
-                            "cards": [
+                            "type": "sensor",
+                            "entity": "sensor.solarpv_totalgenerated",
+                            "graph": "line",
+                            "hours_to_show": 48
+                        },
+                        {
+                            "type": "sensor",
+                            "entity": "sensor.solarpv_panel_amps",
+                            "graph": "line",
+                            "hours_to_show": 48
+                        },
+                        {
+                            "type": "sensor",
+                            "entity": "sensor.solarpv_panel_volts",
+                            "graph": "line",
+                            "hours_to_show": 48
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
                                 {
-                                    "type": "horizontal-stack",
-                                    "cards": [
-                                        {
-                                            "type": "entities",
-                                            "entities": [
-                                                {
-                                                    "entity": "sensor.diskstation_volume_1_average_disk_temp",
-                                                    "name": "Average Disk Temp"
-                                                },
-                                                {
-                                                    "entity": "sensor.diskstation_volume_1_status",
-                                                    "name": "Volume Status"
-                                                },
-                                                {
-                                                    "entity": "sensor.diskstation_volume_1_used_space",
-                                                    "name": "Volume Used Space"
-                                                },
-                                                {
-                                                    "entity": "sensor.diskstation_volume_1_volume_used",
-                                                    "name": "Volume Used"
-                                                }
-                                            ],
-                                            "title": "Shed NAS Overview",
-                                            "header": {
-                                                "type": "picture",
-                                                "image": "http://home.apexweb.co.uk:8123/local/ds1817.png"
-                                            }
-                                        },
-                                        {
-                                            "type": "entities",
-                                            "entities": [
-                                                {
-                                                    "entity": "sensor.ups_battery_runtime"
-                                                },
-                                                {
-                                                    "entity": "sensor.ups_battery_temperature"
-                                                },
-                                                {
-                                                    "entity": "sensor.ups_battery_voltage"
-                                                },
-                                                {
-                                                    "entity": "sensor.ups_input_voltage_2"
-                                                },
-                                                {
-                                                    "entity": "sensor.ups_load_2"
-                                                },
-                                                {
-                                                    "entity": "sensor.ups_output_frequency"
-                                                },
-                                                {
-                                                    "entity": "sensor.ups_output_voltage"
-                                                },
-                                                {
-                                                    "entity": "sensor.nasupspowerwatts"
-                                                },
-                                                {
-                                                    "entity": "sensor.ups_low_battery_runtime"
-                                                },
-                                                {
-                                                    "entity": "sensor.ups_status_2"
-                                                },
-                                                {
-                                                    "entity": "sensor.ups_status_data_2"
-                                                }
-                                            ],
-                                            "title": "Shed NAS UPS",
-                                            "header": {
-                                                "type": "picture",
-                                                "image": "http://home.apexweb.co.uk:8123/local/ds1817.png"
-                                            },
-                                            "footer": {
-                                                "type": "graph",
-                                                "entity": "sensor.nasupspowerwatts",
-                                                "hours_to_show": 24
-                                            }
-                                        },
-                                        {
-                                            "type": "entities",
-                                            "entities": [
-                                                {
-                                                    "entity": "sensor.diskstation_drive_1_temperature",
-                                                    "type": "custom:multiple-entity-row",
-                                                    "name": "Drive 1",
-                                                    "show_state": true,
-                                                    "secondary_info": "last-changed",
-                                                    "entities": [
-                                                        {
-                                                            "entity": "sensor.diskstation_drive_1_status",
-                                                            "name": "Status"
-                                                        }
-                                                    ]
-                                                },
-                                                {
-                                                    "entity": "sensor.diskstation_drive_2_temperature",
-                                                    "type": "custom:multiple-entity-row",
-                                                    "name": "Drive 2",
-                                                    "show_state": true,
-                                                    "secondary_info": "last-changed",
-                                                    "entities": [
-                                                        {
-                                                            "entity": "sensor.diskstation_drive_2_status",
-                                                            "name": "Status"
-                                                        }
-                                                    ]
-                                                },
-                                                {
-                                                    "entity": "sensor.diskstation_drive_3_temperature",
-                                                    "type": "custom:multiple-entity-row",
-                                                    "name": "Drive 3",
-                                                    "show_state": true,
-                                                    "secondary_info": "last-changed",
-                                                    "entities": [
-                                                        {
-                                                            "entity": "sensor.diskstation_drive_3_status",
-                                                            "name": "Status"
-                                                        }
-                                                    ]
-                                                },
-                                                {
-                                                    "entity": "sensor.diskstation_drive_4_temperature",
-                                                    "type": "custom:multiple-entity-row",
-                                                    "name": "Drive 4",
-                                                    "show_state": true,
-                                                    "secondary_info": "last-changed",
-                                                    "entities": [
-                                                        {
-                                                            "entity": "sensor.diskstation_drive_4_status",
-                                                            "name": "Status"
-                                                        }
-                                                    ]
-                                                },
-                                                {
-                                                    "entity": "sensor.diskstation_drive_5_temperature",
-                                                    "type": "custom:multiple-entity-row",
-                                                    "name": "Drive 5",
-                                                    "show_state": true,
-                                                    "secondary_info": "last-changed",
-                                                    "entities": [
-                                                        {
-                                                            "entity": "sensor.diskstation_drive_5_status",
-                                                            "name": "Status"
-                                                        }
-                                                    ]
-                                                },
-                                                {
-                                                    "entity": "sensor.diskstation_drive_6_temperature",
-                                                    "type": "custom:multiple-entity-row",
-                                                    "name": "Drive 6",
-                                                    "show_state": true,
-                                                    "secondary_info": "last-changed",
-                                                    "entities": [
-                                                        {
-                                                            "entity": "sensor.diskstation_drive_6_status",
-                                                            "name": "Status"
-                                                        }
-                                                    ]
-                                                },
-                                                {
-                                                    "entity": "sensor.diskstation_drive_7_temperature",
-                                                    "type": "custom:multiple-entity-row",
-                                                    "name": "Drive 7",
-                                                    "show_state": true,
-                                                    "secondary_info": "last-changed",
-                                                    "entities": [
-                                                        {
-                                                            "entity": "sensor.diskstation_drive_7_status",
-                                                            "name": "Status"
-                                                        }
-                                                    ]
-                                                },
-                                                {
-                                                    "entity": "sensor.diskstation_drive_8_temperature",
-                                                    "type": "custom:multiple-entity-row",
-                                                    "name": "Drive 8",
-                                                    "show_state": true,
-                                                    "secondary_info": "last-changed",
-                                                    "entities": [
-                                                        {
-                                                            "entity": "sensor.diskstation_drive_8_status",
-                                                            "name": "Status"
-                                                        }
-                                                    ]
-                                                }
-                                            ],
-                                            "title": "Drive Status",
-                                            "header": {
-                                                "type": "picture",
-                                                "image": "http://home.apexweb.co.uk:8123/local/ds1817.png"
-                                            }
-                                        }
-                                    ]
+                                    "entity": "sensor.energy_solarpv_total_usage_hourly_peak",
+                                    "name": "Hourly"
                                 },
                                 {
-                                    "type": "horizontal-stack",
-                                    "cards": [
-                                        {
-                                            "type": "vertical-stack",
-                                            "cards": [
-                                                {
-                                                    "type": "entity",
-                                                    "entity": "sensor.wifi",
-                                                    "name": "Connected WiFi Devices",
-                                                    "icon": "hass:wifi"
-                                                },
-                                                {
-                                                    "type": "entity",
-                                                    "entity": "sensor.firewall_uptime",
-                                                    "icon": "hass:clock"
-                                                },
-                                                {
-                                                    "type": "entities",
-                                                    "entities": [
-                                                        "sensor.brother_hl_l5100dn_series"
-                                                    ],
-                                                    "title": "Brother HL-L5100DN series"
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "type": "entities",
-                                            "entities": [
-                                                {
-                                                    "entity": "sensor.memory_use"
-                                                },
-                                                {
-                                                    "entity": "sensor.memory_free"
-                                                },
-                                                {
-                                                    "entity": "sensor.disk_use_percent_config"
-                                                },
-                                                {
-                                                    "entity": "sensor.processor_use_percent"
-                                                },
-                                                {
-                                                    "entity": "sensor.load_1m"
-                                                },
-                                                {
-                                                    "entity": "sensor.load_5m"
-                                                },
-                                                {
-                                                    "entity": "sensor.load_15m"
-                                                }
-                                            ],
-                                            "title": "Linux Server"
-                                        },
-                                        {
-                                            "type": "entities",
-                                            "entities": [
-                                                {
-                                                    "entity": "sensor.ups_load"
-                                                },
-                                                {
-                                                    "entity": "sensor.ups_battery",
-                                                    "name": "Battery"
-                                                },
-                                                {
-                                                    "entity": "sensor.networkcupboard_voltage",
-                                                    "name": "Voltage"
-                                                },
-                                                {
-                                                    "entity": "sensor.ups_output_voltage"
-                                                },
-                                                {
-                                                    "entity": "sensor.networkcupboard_current_consumption",
-                                                    "name": "Watts"
-                                                },
-                                                {
-                                                    "entity": "sensor.networkcupboard_current",
-                                                    "name": "Amps"
-                                                },
-                                                {
-                                                    "entity": "sensor.networkcupboard_today_s_consumption",
-                                                    "name": "Today",
-                                                    "icon": "mdi:calendar-today"
-                                                },
-                                                {
-                                                    "entity": "sensor.networkcupboard_total_consumption",
-                                                    "icon": "mdi:calendar-blank",
-                                                    "name": "Total"
-                                                }
-                                            ],
-                                            "title": "Network Cupboard"
-                                        }
-                                    ]
+                                    "entity": "sensor.energy_solarpv_total_usage_daily_peak",
+                                    "name": "Daily"
+                                },
+                                {
+                                    "entity": "sensor.energy_solarpv_total_usage_monthly_peak",
+                                    "name": "Monthly"
                                 }
+                            ],
+                            "title": "Solar PV Generated"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                "sensor.gb_co2_intensity",
+                                "sensor.gb_grid_fossil_fuel_percentage"
                             ]
                         }
                     ]
@@ -1577,248 +1008,303 @@
                     ]
                 },
                 {
-                    "title": "Solar PV",
-                    "path": "solar-pv",
-                    "icon": "mdi:solar-panel",
+                    "title": "Network Storage",
+                    "path": "network-storage",
+                    "icon": "mdi:nas",
+                    "type": "panel",
                     "badges": [],
                     "cards": [
                         {
-                            "type": "sensor",
-                            "entity": "sensor.solarpv_gridpower",
-                            "graph": "line",
-                            "hours_to_show": 48
-                        },
-                        {
-                            "type": "entities",
-                            "entities": [
+                            "type": "vertical-stack",
+                            "title": "Network Devices",
+                            "cards": [
                                 {
-                                    "entity": "sensor.solarpv_panel_volts",
-                                    "secondary_info": "last-changed"
+                                    "type": "horizontal-stack",
+                                    "cards": [
+                                        {
+                                            "type": "entities",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.diskstation_volume_1_average_disk_temp",
+                                                    "name": "Average Disk Temp"
+                                                },
+                                                {
+                                                    "entity": "sensor.diskstation_volume_1_status",
+                                                    "name": "Volume Status"
+                                                },
+                                                {
+                                                    "entity": "sensor.diskstation_volume_1_used_space",
+                                                    "name": "Volume Used Space"
+                                                },
+                                                {
+                                                    "entity": "sensor.diskstation_volume_1_volume_used",
+                                                    "name": "Volume Used"
+                                                }
+                                            ],
+                                            "title": "Shed NAS Overview",
+                                            "header": {
+                                                "type": "picture",
+                                                "image": "http://home.apexweb.co.uk:8123/local/ds1817.png"
+                                            }
+                                        },
+                                        {
+                                            "type": "entities",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.ups_battery_runtime"
+                                                },
+                                                {
+                                                    "entity": "sensor.ups_battery_temperature"
+                                                },
+                                                {
+                                                    "entity": "sensor.ups_battery_voltage"
+                                                },
+                                                {
+                                                    "entity": "sensor.ups_input_voltage_2"
+                                                },
+                                                {
+                                                    "entity": "sensor.ups_load_2"
+                                                },
+                                                {
+                                                    "entity": "sensor.ups_output_frequency"
+                                                },
+                                                {
+                                                    "entity": "sensor.ups_output_voltage"
+                                                },
+                                                {
+                                                    "entity": "sensor.nasupspowerwatts"
+                                                },
+                                                {
+                                                    "entity": "sensor.ups_low_battery_runtime"
+                                                },
+                                                {
+                                                    "entity": "sensor.ups_status_2"
+                                                },
+                                                {
+                                                    "entity": "sensor.ups_status_data_2"
+                                                }
+                                            ],
+                                            "title": "Shed NAS UPS",
+                                            "header": {
+                                                "type": "picture",
+                                                "image": "http://home.apexweb.co.uk:8123/local/ds1817.png"
+                                            },
+                                            "footer": {
+                                                "type": "graph",
+                                                "entity": "sensor.nasupspowerwatts",
+                                                "hours_to_show": 24
+                                            }
+                                        },
+                                        {
+                                            "type": "entities",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.diskstation_drive_1_temperature",
+                                                    "type": "custom:multiple-entity-row",
+                                                    "name": "Drive 1",
+                                                    "show_state": true,
+                                                    "secondary_info": "last-changed",
+                                                    "entities": [
+                                                        {
+                                                            "entity": "sensor.diskstation_drive_1_status",
+                                                            "name": "Status"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "entity": "sensor.diskstation_drive_2_temperature",
+                                                    "type": "custom:multiple-entity-row",
+                                                    "name": "Drive 2",
+                                                    "show_state": true,
+                                                    "secondary_info": "last-changed",
+                                                    "entities": [
+                                                        {
+                                                            "entity": "sensor.diskstation_drive_2_status",
+                                                            "name": "Status"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "entity": "sensor.diskstation_drive_3_temperature",
+                                                    "type": "custom:multiple-entity-row",
+                                                    "name": "Drive 3",
+                                                    "show_state": true,
+                                                    "secondary_info": "last-changed",
+                                                    "entities": [
+                                                        {
+                                                            "entity": "sensor.diskstation_drive_3_status",
+                                                            "name": "Status"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "entity": "sensor.diskstation_drive_4_temperature",
+                                                    "type": "custom:multiple-entity-row",
+                                                    "name": "Drive 4",
+                                                    "show_state": true,
+                                                    "secondary_info": "last-changed",
+                                                    "entities": [
+                                                        {
+                                                            "entity": "sensor.diskstation_drive_4_status",
+                                                            "name": "Status"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "entity": "sensor.diskstation_drive_5_temperature",
+                                                    "type": "custom:multiple-entity-row",
+                                                    "name": "Drive 5",
+                                                    "show_state": true,
+                                                    "secondary_info": "last-changed",
+                                                    "entities": [
+                                                        {
+                                                            "entity": "sensor.diskstation_drive_5_status",
+                                                            "name": "Status"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "entity": "sensor.diskstation_drive_6_temperature",
+                                                    "type": "custom:multiple-entity-row",
+                                                    "name": "Drive 6",
+                                                    "show_state": true,
+                                                    "secondary_info": "last-changed",
+                                                    "entities": [
+                                                        {
+                                                            "entity": "sensor.diskstation_drive_6_status",
+                                                            "name": "Status"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "entity": "sensor.diskstation_drive_7_temperature",
+                                                    "type": "custom:multiple-entity-row",
+                                                    "name": "Drive 7",
+                                                    "show_state": true,
+                                                    "secondary_info": "last-changed",
+                                                    "entities": [
+                                                        {
+                                                            "entity": "sensor.diskstation_drive_7_status",
+                                                            "name": "Status"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "entity": "sensor.diskstation_drive_8_temperature",
+                                                    "type": "custom:multiple-entity-row",
+                                                    "name": "Drive 8",
+                                                    "show_state": true,
+                                                    "secondary_info": "last-changed",
+                                                    "entities": [
+                                                        {
+                                                            "entity": "sensor.diskstation_drive_8_status",
+                                                            "name": "Status"
+                                                        }
+                                                    ]
+                                                }
+                                            ],
+                                            "title": "Drive Status",
+                                            "header": {
+                                                "type": "picture",
+                                                "image": "http://home.apexweb.co.uk:8123/local/ds1817.png"
+                                            }
+                                        }
+                                    ]
                                 },
                                 {
-                                    "entity": "sensor.solarpv_panel_amps"
-                                },
-                                {
-                                    "entity": "sensor.solarpv_gridpower"
-                                },
-                                {
-                                    "entity": "sensor.solarpv_inverter_temp"
-                                },
-                                {
-                                    "entity": "sensor.solarpv_totalgenerated",
-                                    "secondary_info": "last-changed"
+                                    "type": "horizontal-stack",
+                                    "cards": [
+                                        {
+                                            "type": "vertical-stack",
+                                            "cards": [
+                                                {
+                                                    "type": "entity",
+                                                    "entity": "sensor.wifi",
+                                                    "name": "Connected WiFi Devices",
+                                                    "icon": "hass:wifi"
+                                                },
+                                                {
+                                                    "type": "entity",
+                                                    "entity": "sensor.firewall_uptime",
+                                                    "icon": "hass:clock"
+                                                },
+                                                {
+                                                    "type": "entities",
+                                                    "entities": [
+                                                        "sensor.brother_hl_l5100dn_series"
+                                                    ],
+                                                    "title": "Brother HL-L5100DN series"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "entities",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.memory_use"
+                                                },
+                                                {
+                                                    "entity": "sensor.memory_free"
+                                                },
+                                                {
+                                                    "entity": "sensor.disk_use_percent_config"
+                                                },
+                                                {
+                                                    "entity": "sensor.processor_use_percent"
+                                                },
+                                                {
+                                                    "entity": "sensor.load_1m"
+                                                },
+                                                {
+                                                    "entity": "sensor.load_5m"
+                                                },
+                                                {
+                                                    "entity": "sensor.load_15m"
+                                                }
+                                            ],
+                                            "title": "Linux Server"
+                                        },
+                                        {
+                                            "type": "entities",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.ups_load"
+                                                },
+                                                {
+                                                    "entity": "sensor.ups_battery",
+                                                    "name": "Battery"
+                                                },
+                                                {
+                                                    "entity": "sensor.networkcupboard_voltage",
+                                                    "name": "Voltage"
+                                                },
+                                                {
+                                                    "entity": "sensor.ups_output_voltage"
+                                                },
+                                                {
+                                                    "entity": "sensor.networkcupboard_current_consumption",
+                                                    "name": "Watts"
+                                                },
+                                                {
+                                                    "entity": "sensor.networkcupboard_current",
+                                                    "name": "Amps"
+                                                },
+                                                {
+                                                    "entity": "sensor.networkcupboard_today_s_consumption",
+                                                    "name": "Today",
+                                                    "icon": "mdi:calendar-today"
+                                                },
+                                                {
+                                                    "entity": "sensor.networkcupboard_total_consumption",
+                                                    "icon": "mdi:calendar-blank",
+                                                    "name": "Total"
+                                                }
+                                            ],
+                                            "title": "Network Cupboard"
+                                        }
+                                    ]
                                 }
-                            ],
-                            "title": "Inverter"
-                        },
-                        {
-                            "type": "sensor",
-                            "entity": "sensor.solarpv_totalgenerated",
-                            "graph": "line",
-                            "hours_to_show": 48
-                        },
-                        {
-                            "type": "sensor",
-                            "entity": "sensor.solarpv_panel_amps",
-                            "graph": "line",
-                            "hours_to_show": 48
-                        },
-                        {
-                            "type": "sensor",
-                            "entity": "sensor.solarpv_panel_volts",
-                            "graph": "line",
-                            "hours_to_show": 48
-                        },
-                        {
-                            "type": "entities",
-                            "entities": [
-                                {
-                                    "entity": "sensor.energy_solarpv_total_usage_hourly_peak",
-                                    "name": "Hourly"
-                                },
-                                {
-                                    "entity": "sensor.energy_solarpv_total_usage_daily_peak",
-                                    "name": "Daily"
-                                },
-                                {
-                                    "entity": "sensor.energy_solarpv_total_usage_monthly_peak",
-                                    "name": "Monthly"
-                                }
-                            ],
-                            "title": "Solar PV Generated"
-                        },
-                        {
-                            "type": "entities",
-                            "entities": [
-                                "sensor.gb_co2_intensity",
-                                "sensor.gb_grid_fossil_fuel_percentage"
                             ]
-                        }
-                    ]
-                },
-                {
-                    "title": "FloorPlan",
-                    "path": "floorplan",
-                    "panel": true,
-                    "icon": "mdi:floor-plan",
-                    "badges": [],
-                    "cards": [
-                        {
-                            "type": "picture-elements",
-                            "title": "Floor Plan",
-                            "elements": [
-                                {
-                                    "type": "state-badge",
-                                    "entity": "sensor.mains_current",
-                                    "style": {
-                                        "color": "transparent",
-                                        "top": "10%",
-                                        "left": "62%"
-                                    }
-                                },
-                                {
-                                    "type": "state-badge",
-                                    "entity": "sensor.tempnetworkcupboard_temperature",
-                                    "name": "Network Cupboard",
-                                    "style": {
-                                        "color": "transparent",
-                                        "top": "37%",
-                                        "left": "27%"
-                                    }
-                                },
-                                {
-                                    "type": "state-badge",
-                                    "entity": "sensor.tempandrew_temperature",
-                                    "title": "Andrew Bedroom",
-                                    "name": "Andrew Bedroom",
-                                    "style": {
-                                        "color": "transparent",
-                                        "top": "17%",
-                                        "left": "17%"
-                                    }
-                                },
-                                {
-                                    "type": "state-badge",
-                                    "entity": "sensor.tempbrian_temperature",
-                                    "style": {
-                                        "color": "transparent",
-                                        "top": "17%",
-                                        "left": "47%"
-                                    }
-                                },
-                                {
-                                    "type": "state-badge",
-                                    "entity": "sensor.tempmumbedroom_temperature",
-                                    "name": "Bedroom 3",
-                                    "style": {
-                                        "color": "transparent",
-                                        "top": "52%",
-                                        "left": "17%"
-                                    }
-                                },
-                                {
-                                    "type": "state-badge",
-                                    "entity": "sensor.templivingroom_temperature",
-                                    "style": {
-                                        "color": "transparent",
-                                        "top": "52%",
-                                        "left": "47%"
-                                    }
-                                },
-                                {
-                                    "type": "state-badge",
-                                    "entity": "sensor.temploft_temperature",
-                                    "name": "Loft",
-                                    "style": {
-                                        "color": "transparent",
-                                        "top": "40%",
-                                        "left": "83%"
-                                    }
-                                },
-                                {
-                                    "type": "state-badge",
-                                    "entity": "sensor.hot_water_top",
-                                    "style": {
-                                        "color": "transparent",
-                                        "top": "72%",
-                                        "left": "18%"
-                                    }
-                                },
-                                {
-                                    "type": "state-badge",
-                                    "entity": "sensor.tempoutdoorwindow_temperature",
-                                    "style": {
-                                        "color": "transparent",
-                                        "top": "85%",
-                                        "left": "55%"
-                                    }
-                                },
-                                {
-                                    "type": "state-badge",
-                                    "entity": "sensor.hallway_temperature",
-                                    "title": "Hallway",
-                                    "style": {
-                                        "color": "transparent",
-                                        "top": "40%",
-                                        "left": "62%"
-                                    }
-                                },
-                                {
-                                    "type": "state-badge",
-                                    "entity": "sensor.bathroom_temperature",
-                                    "style": {
-                                        "color": "transparent",
-                                        "top": "85%",
-                                        "left": "12%"
-                                    }
-                                },
-                                {
-                                    "type": "state-badge",
-                                    "entity": "sensor.tempkitchen_temperature",
-                                    "style": {
-                                        "color": "transparent",
-                                        "top": "85%",
-                                        "left": "45%"
-                                    }
-                                },
-                                {
-                                    "type": "state-icon",
-                                    "entity": "media_player.living_room",
-                                    "style": {
-                                        "color": "transparent",
-                                        "top": "64%",
-                                        "left": "40%"
-                                    }
-                                },
-                                {
-                                    "type": "state-icon",
-                                    "entity": "media_player.kitchen",
-                                    "style": {
-                                        "color": "transparent",
-                                        "top": "90%",
-                                        "left": "40%"
-                                    }
-                                },
-                                {
-                                    "type": "state-icon",
-                                    "entity": "media_player.loft",
-                                    "style": {
-                                        "color": "transparent",
-                                        "top": "40%",
-                                        "left": "92%"
-                                    }
-                                },
-                                {
-                                    "type": "state-icon",
-                                    "entity": "media_player.brian_bedroom",
-                                    "style": {
-                                        "color": "transparent",
-                                        "top": "29%",
-                                        "left": "50%"
-                                    }
-                                }
-                            ],
-                            "image": "http://home:8123/local/house.svg"
                         }
                     ]
                 },
@@ -1989,6 +1475,7 @@
                 {
                     "title": "Loft",
                     "path": "loft-power",
+                    "icon": "mdi:home-roof",
                     "badges": [],
                     "cards": [
                         {
@@ -2250,9 +1737,502 @@
                     ]
                 },
                 {
+                    "title": "Rooms",
+                    "path": "rooms",
+                    "icon": "mdi:home-thermometer",
+                    "badges": [],
+                    "cards": [
+                        {
+                            "type": "vertical-stack",
+                            "title": "Downstairs",
+                            "cards": [
+                                {
+                                    "type": "horizontal-stack",
+                                    "cards": [
+                                        {
+                                            "type": "custom:mini-graph-card",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.tempbrian_temperature",
+                                                    "name": "Brian Bedroom"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "custom:mini-graph-card",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.tempbrian_humidity",
+                                                    "name": "Humidity",
+                                                    "color": "lightblue"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "horizontal-stack",
+                                    "cards": [
+                                        {
+                                            "type": "custom:mini-graph-card",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.templivingroom_temperature",
+                                                    "name": "Living Room"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "custom:mini-graph-card",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.templivingroom_humidity",
+                                                    "name": "Humidity",
+                                                    "color": "lightblue"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "horizontal-stack",
+                                    "cards": [
+                                        {
+                                            "type": "custom:mini-graph-card",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.tempkitchen_temperature",
+                                                    "name": "Kitchen"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "custom:mini-graph-card",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.tempkitchen_humidity",
+                                                    "name": "Humidity",
+                                                    "color": "lightblue"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "vertical-stack",
+                            "title": "Upstairs",
+                            "cards": [
+                                {
+                                    "type": "horizontal-stack",
+                                    "cards": [
+                                        {
+                                            "type": "custom:mini-graph-card",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.tempandrew_temperature",
+                                                    "name": "Andrew Bedroom"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "custom:mini-graph-card",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.tempandrew_humidity",
+                                                    "name": "Humidity",
+                                                    "color": "lightblue"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "horizontal-stack",
+                                    "cards": [
+                                        {
+                                            "type": "custom:mini-graph-card",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.tempnetworkcupboard_temperature",
+                                                    "name": "Network Temperature"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "custom:mini-graph-card",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.tempandrew_pressure",
+                                                    "name": "Pressure",
+                                                    "color": "lightblue"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "horizontal-stack",
+                                    "cards": [
+                                        {
+                                            "type": "custom:mini-graph-card",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.tempmumbedroom_temperature",
+                                                    "name": "Mum/Dad Bedroom"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "custom:mini-graph-card",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.bathroom_temperature",
+                                                    "name": "Bathroom"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "vertical-stack",
+                            "title": "Other Locations",
+                            "cards": [
+                                {
+                                    "type": "horizontal-stack",
+                                    "cards": [
+                                        {
+                                            "type": "custom:mini-graph-card",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.temploft_temperature",
+                                                    "name": "Loft"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "custom:mini-graph-card",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.temploft_humidity",
+                                                    "name": "Humidity",
+                                                    "color": "lightblue"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "horizontal-stack",
+                                    "cards": [
+                                        {
+                                            "type": "custom:mini-graph-card",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.hallway_temperature",
+                                                    "name": "Hallway"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "custom:mini-graph-card",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.hallway_humidity",
+                                                    "name": "Humidity",
+                                                    "color": "lightblue"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "horizontal-stack",
+                                    "cards": [
+                                        {
+                                            "type": "custom:mini-graph-card",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.temploftwater_temperature",
+                                                    "name": "Loft Water Tank Air"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "custom:mini-graph-card",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.temploftwater_humidity",
+                                                    "name": "Humidity",
+                                                    "color": "lightblue"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                {
+                                    "entity": "sensor.backdoor_battery",
+                                    "name": "Back Door"
+                                },
+                                {
+                                    "entity": "sensor.frontdoor_battery",
+                                    "name": "Front Door"
+                                },
+                                {
+                                    "entity": "sensor.loft_window_one_battery",
+                                    "name": "Loft Left Window"
+                                },
+                                {
+                                    "entity": "sensor.loftwindowright_battery",
+                                    "name": "Loft Right Window"
+                                },
+                                {
+                                    "entity": "sensor.tempandrew_battery",
+                                    "name": "Andrew Temp Sensor"
+                                },
+                                {
+                                    "entity": "sensor.tempbrian_battery",
+                                    "name": "Brian Temp Sensor"
+                                },
+                                {
+                                    "entity": "sensor.tempoutdoorwindow_battery",
+                                    "name": "Garden Temp Sensor"
+                                },
+                                {
+                                    "entity": "sensor.tempkitchen_battery",
+                                    "name": "Kitchen Temp Sensor"
+                                },
+                                {
+                                    "entity": "sensor.hallway_battery",
+                                    "name": "Hallway"
+                                },
+                                {
+                                    "entity": "sensor.templivingroom_battery",
+                                    "name": "Living Room  Temp Sensor"
+                                },
+                                {
+                                    "entity": "sensor.temploft_battery",
+                                    "name": "Loft Battery"
+                                },
+                                {
+                                    "entity": "sensor.tempnetworkcupboard_battery",
+                                    "name": "Network Cupboard Battery"
+                                },
+                                {
+                                    "entity": "sensor.tempmumbedroom_battery",
+                                    "name": "Mum / Dad Bedroom Battery"
+                                },
+                                {
+                                    "entity": "sensor.switchlofthatch_battery",
+                                    "name": "Loft Hatch Battery"
+                                },
+                                {
+                                    "entity": "sensor.temploftwater_battery"
+                                }
+                            ],
+                            "title": "Battery Status"
+                        }
+                    ]
+                },
+                {
+                    "title": "FloorPlan",
+                    "path": "floorplan",
+                    "panel": true,
+                    "icon": "mdi:floor-plan",
+                    "badges": [],
+                    "cards": [
+                        {
+                            "type": "picture-elements",
+                            "title": "Floor Plan",
+                            "elements": [
+                                {
+                                    "type": "state-badge",
+                                    "entity": "sensor.mains_current",
+                                    "style": {
+                                        "color": "transparent",
+                                        "top": "10%",
+                                        "left": "62%"
+                                    }
+                                },
+                                {
+                                    "type": "state-badge",
+                                    "entity": "sensor.tempnetworkcupboard_temperature",
+                                    "name": "Network Cupboard",
+                                    "style": {
+                                        "color": "transparent",
+                                        "top": "37%",
+                                        "left": "27%"
+                                    }
+                                },
+                                {
+                                    "type": "state-badge",
+                                    "entity": "sensor.tempandrew_temperature",
+                                    "title": "Andrew Bedroom",
+                                    "name": "Andrew Bedroom",
+                                    "style": {
+                                        "color": "transparent",
+                                        "top": "17%",
+                                        "left": "17%"
+                                    }
+                                },
+                                {
+                                    "type": "state-badge",
+                                    "entity": "sensor.tempbrian_temperature",
+                                    "style": {
+                                        "color": "transparent",
+                                        "top": "17%",
+                                        "left": "47%"
+                                    }
+                                },
+                                {
+                                    "type": "state-badge",
+                                    "entity": "sensor.tempmumbedroom_temperature",
+                                    "name": "Bedroom 3",
+                                    "style": {
+                                        "color": "transparent",
+                                        "top": "52%",
+                                        "left": "17%"
+                                    }
+                                },
+                                {
+                                    "type": "state-badge",
+                                    "entity": "sensor.templivingroom_temperature",
+                                    "style": {
+                                        "color": "transparent",
+                                        "top": "52%",
+                                        "left": "47%"
+                                    }
+                                },
+                                {
+                                    "type": "state-badge",
+                                    "entity": "sensor.temploft_temperature",
+                                    "name": "Loft",
+                                    "style": {
+                                        "color": "transparent",
+                                        "top": "40%",
+                                        "left": "83%"
+                                    }
+                                },
+                                {
+                                    "type": "state-badge",
+                                    "entity": "sensor.hot_water_top",
+                                    "style": {
+                                        "color": "transparent",
+                                        "top": "72%",
+                                        "left": "18%"
+                                    }
+                                },
+                                {
+                                    "type": "state-badge",
+                                    "entity": "sensor.tempoutdoorwindow_temperature",
+                                    "style": {
+                                        "color": "transparent",
+                                        "top": "85%",
+                                        "left": "55%"
+                                    }
+                                },
+                                {
+                                    "type": "state-badge",
+                                    "entity": "sensor.hallway_temperature",
+                                    "title": "Hallway",
+                                    "style": {
+                                        "color": "transparent",
+                                        "top": "40%",
+                                        "left": "62%"
+                                    }
+                                },
+                                {
+                                    "type": "state-badge",
+                                    "entity": "sensor.bathroom_temperature",
+                                    "style": {
+                                        "color": "transparent",
+                                        "top": "85%",
+                                        "left": "12%"
+                                    }
+                                },
+                                {
+                                    "type": "state-badge",
+                                    "entity": "sensor.tempkitchen_temperature",
+                                    "style": {
+                                        "color": "transparent",
+                                        "top": "85%",
+                                        "left": "45%"
+                                    }
+                                },
+                                {
+                                    "type": "state-icon",
+                                    "entity": "media_player.living_room",
+                                    "style": {
+                                        "color": "transparent",
+                                        "top": "64%",
+                                        "left": "40%"
+                                    }
+                                },
+                                {
+                                    "type": "state-icon",
+                                    "entity": "media_player.kitchen",
+                                    "style": {
+                                        "color": "transparent",
+                                        "top": "90%",
+                                        "left": "40%"
+                                    }
+                                },
+                                {
+                                    "type": "state-icon",
+                                    "entity": "media_player.loft",
+                                    "style": {
+                                        "color": "transparent",
+                                        "top": "40%",
+                                        "left": "92%"
+                                    }
+                                },
+                                {
+                                    "type": "state-icon",
+                                    "entity": "media_player.brian_bedroom",
+                                    "style": {
+                                        "color": "transparent",
+                                        "top": "29%",
+                                        "left": "50%"
+                                    }
+                                }
+                            ],
+                            "image": "http://home:8123/local/house.svg"
+                        }
+                    ]
+                },
+                {
+                    "title": "Meida",
+                    "path": "media",
+                    "icon": "mdi:speaker",
+                    "badges": [],
+                    "cards": [
+                        {
+                            "type": "media-control",
+                            "entity": "media_player.living_room"
+                        },
+                        {
+                            "type": "media-control",
+                            "entity": "media_player.kitchen"
+                        },
+                        {
+                            "type": "media-control",
+                            "entity": "media_player.brian_bedroom"
+                        }
+                    ]
+                },
+                {
                     "title": "Statistics",
                     "path": "statistics",
                     "type": "sidebar",
+                    "icon": "mdi:chart-arc",
                     "badges": [],
                     "cards": [
                         {
@@ -2328,80 +2308,6 @@
                             "view_layout": {
                                 "position": "sidebar"
                             }
-                        }
-                    ]
-                },
-                {
-                    "title": "Meida",
-                    "path": "media",
-                    "badges": [],
-                    "cards": [
-                        {
-                            "type": "media-control",
-                            "entity": "media_player.living_room"
-                        },
-                        {
-                            "type": "media-control",
-                            "entity": "media_player.kitchen"
-                        },
-                        {
-                            "type": "media-control",
-                            "entity": "media_player.brian_bedroom"
-                        }
-                    ]
-                },
-                {
-                    "title": "Home Energy",
-                    "path": "home-energy",
-                    "icon": "mdi:lightning-bolt",
-                    "type": "sidebar",
-                    "badges": [],
-                    "cards": [
-                        {
-                            "type": "energy-date-selection"
-                        },
-                        {
-                            "type": "horizontal-stack",
-                            "cards": [
-                                {
-                                    "type": "energy-usage-graph",
-                                    "title": "Electricity"
-                                },
-                                {
-                                    "type": "energy-gas-graph",
-                                    "title": "Gas"
-                                }
-                            ]
-                        },
-                        {
-                            "type": "horizontal-stack",
-                            "cards": [
-                                {
-                                    "type": "energy-solar-graph",
-                                    "title": "Solar Generated"
-                                },
-                                {
-                                    "type": "energy-distribution",
-                                    "link_dashboard": true,
-                                    "title": "Overview"
-                                }
-                            ],
-                            "view_layout": {
-                                "position": "main"
-                            }
-                        },
-                        {
-                            "type": "horizontal-stack",
-                            "cards": [
-                                {
-                                    "type": "energy-sources-table",
-                                    "title": "Sources"
-                                },
-                                {
-                                    "type": "energy-devices-graph",
-                                    "title": "Devices"
-                                }
-                            ]
                         }
                     ]
                 }

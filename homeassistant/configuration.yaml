@@ -263,6 +263,13 @@ notify:
     name: entity_log
     filename: /config/www/entity_log.txt
     timestamp: false
+  - platform: ios
+  - name: all_ios
+    platform: group
+    services:
+      - service: mobile_app_brians_iphone  
+      - service: mobile_app_brians_ipad_pro
+      - service: mobile_app_andrews_iphone
 stream:
 # camera:
 #   - platform: generic
@@ -273,3 +280,4 @@ stream:
 #     authentication: basic
 #     username: !secret camerausername
 #     password: !secret camerapassword
+

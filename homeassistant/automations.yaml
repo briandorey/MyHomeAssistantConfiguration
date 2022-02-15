@@ -137,18 +137,9 @@
       entity_id: binary_sensor.loftwindowright_contact
       state: 'on'
   action:
-  - service: notify.mobile_app_brian_iphone
+  - service: notify.all_ios
     data:
       message: Loft Window is open
-      title: Loft Window Alert
-  - service: notify.mobile_app_brians_ipad_pro
-    data:
-      message: Loft Window is open
-      title: Loft Window Alert
-  - service: notify.mobile_app_andrews_iphone
-    data:
-      message: Loft Window is open
-      title: Loft Window Alert
   mode: single
 - id: '1628954369857'
   alias: Washing Machine Cycle finished
@@ -165,25 +156,12 @@
       below: '5'
       for: 00:02:00
     continue_on_timeout: false
-  - service: notify.mobile_app_brian_iphone
+  - service: notify.all_ios
     data:
       message: Alert! The washing machine has finished, please remove the clothes
         from the washing machine
-  - service: notify.mobile_app_lindas_ipad
-    data:
-      message: Alert! The washing machine has finished, please remove the clothes
-        from the washing machine
-      data:
-        push:
-          sound: Update.caf
-  - service: notify.mobile_app_geoffs_ipad
-    data:
-      message: Alert! The washing machine has finished, please remove the clothes
-        from the washing machine
-      data:
-        push:
-          sound: Update.caf
   - service: script.scriptwashingmachinecomplete
+    data: {}
   mode: single
 - id: '1630839496641'
   alias: Loft TRV Set Hatch Open
@@ -237,3 +215,36 @@
     title: ''
     message: Low Battery Warning
   mode: single
+- id: '1644663560049'
+  alias: Front Door Alert
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.frontdoor_contact
+    from: 'off'
+    to: 'on'
+  action:
+  - service: notify.all_ios
+    data:
+      message: Front door open
+  mode: single
+- id: '1644759452555'
+  alias: Low battery level detection & notification for all battery sensors
+  description: ''
+  use_blueprint:
+    path: sbyx/low-battery-level-detection-notification-for-all-battery-sensors.yaml
+    input:
+      actions:
+      - service: notify.mobile_app_brian_iphone
+        data:
+          message: Low Battery alert {{sensors}}
+      threshold: 20
+- id: '1644769461732'
+  alias: Test Brian Leave Home
+  description: ''
+  use_blueprint:
+    path: homeassistant/notify_leaving_zone.yaml
+    input:
+      person_entity: person.brian
+      zone_entity: zone.home
+      notify_device: da437ed8095111eb8c3ec58dac679adf
