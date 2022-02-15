@@ -13,9 +13,6 @@ More information about my various smart home and automation projects can be foun
 * [Button Card](https://github.com/custom-cards/button-card)
 * [lovelace-multiple-entity-row](https://github.com/benct/lovelace-multiple-entity-row)
 * [mini-graph-card](https://github.com/kalkih/mini-graph-card)
-* [sidebar-card](https://github.com/DBuit/sidebar-card)
-
-
 
 ## Screenshots
 
