@@ -20,15 +20,13 @@
     networkupspowerwatts:
       friendly_name: "Network UPS Power Watts"
       value_template: "{{ states('sensor.ups_nominal_output_power')|float(0) / states('sensor.ups_load')|float(0)  | round(2) }}"
-
-      
       unit_of_measurement: W
     
 - platform: template
   sensors:
     nasupspowerwatts:
       friendly_name: "NAS UPS Power Watts"
-      value_template: "{{ (float(states('sensor.ups_load_2')) / 100 * 210)  | round(2) }}"
+      value_template: "{{ ((float(states('sensor.ups_load_2')) / 100 * 210)  | round(2)) + 10 }}"
       unit_of_measurement: W    
 
 - platform: template
@@ -215,17 +213,19 @@
       friendly_name: "Metered Devices"
       unit_of_measurement: 'W'
       icon_template: mdi:speedometer
-      value_template: "{{ (states('sensor.tplinkbriantv_current_consumption')|float(0) +
-        states('sensor.powerbriantv_power')|float(0) +
-        states('sensor.powerandpctv_power')|float(0) +
-        states('sensor.powerlivingroomtvsocket_power')|float(0) +
-        states('sensor.washing_machine_power')|float(0) +
-        states('sensor.tumble_dryer_power')|float(0) +
-        states('sensor.kitchen_fridge_power')|float(0) +
-        states('sensor.networkcupboard_current_consumption')|float(0) +
-        states('sensor.nasupspowerwatts')|float(0) +
-        states('sensor.ovenandpump_power')|float(0) +
-        states('sensor.workbench_power')|float(0))  | round(2)
+      value_template: "{{ (states('sensor.smartplugbrianpc_current_consumption')|float(0) +
+              states('sensor.tplinkbriantv_current_consumption')|float(0) +
+              states('sensor.powerandpctv_power')|float(0) +
+              states('sensor.powerlivingroomtvsocket_power')|float(0) +
+              states('sensor.washing_machine_power')|float(0) +
+              states('sensor.tumble_dryer_power')|float(0) +
+              states('sensor.cooker_power')|float(0) +
+              states('sensor.kitchen_fridge_power')|float(0) +
+              states('sensor.shed_freezer_power')|float(0) +
+              states('sensor.networkcupboard_current_consumption')|float(0) +
+              states('sensor.nasupspowerwatts')|float(0) +
+              states('sensor.ovenandpump_power')|float(0) +
+              states('sensor.workbench_power')|float(0)) | round(2)
         }}" 
     
 - platform: template
@@ -261,3 +261,35 @@
       unit_of_measurement: 'kWh'
       value_template: "{{ states('sensor.ovenandpump_energy') }}"
       icon_template: mdi:mdi-current-ac      
+
+- platform: template
+  sensors:  
+    main_shedfreezer_energy:
+      device_class: energy
+      friendly_name: "Energy Shed Freezer"
+      attribute_templates:
+        state_class: total_increasing
+        device_class: energy
+      unit_of_measurement: 'kWh'
+      value_template: "{{ states('sensor.shed_freezer_total_power') }}"
+      icon_template: mdi:mdi-current-ac
+      
+      
+- platform: template
+  sensors:
+    mainsvssolarpvinput:
+      friendly_name: "Mains Watts minus Solar Watts"
+      value_template: "{{ states('sensor.energy_mainswatts')|float(0) - states('sensor.solarpv_gridpower')|float(0)  | round(2) }}"
+      unit_of_measurement: W      
+
+- platform: template
+  sensors:  
+    main_cooker_energy:
+      device_class: energy
+      friendly_name: "Energy Cooker"
+      attribute_templates:
+        state_class: total_increasing
+        device_class: energy
+      unit_of_measurement: 'kWh'
+      value_template: "{{ states('sensor.cooker_total_power') }}"
+      icon_template: mdi:mdi-current-ac

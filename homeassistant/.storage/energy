@@ -64,6 +64,12 @@
             },
             {
                 "stat_consumption": "sensor.main_kitchenfridgefreezer_energy"
+            },
+            {
+                "stat_consumption": "sensor.main_cooker_energy"
+            },
+            {
+                "stat_consumption": "sensor.main_shedfreezer_energy"
             }
         ]
     }

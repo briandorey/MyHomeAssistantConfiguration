@@ -157,3 +157,55 @@
   name: 'Kitchen Fridge Current'
   unit_of_measurement: 'A'
   value_template: "{{ value_json.ENERGY.Current }}"
+  
+- platform: mqtt
+  state_topic: "/home/devices/shedfreezer/SENSOR"
+  name: 'Shed Freezer Reactive Power'
+  unit_of_measurement: 'VA'
+  value_template: "{{ value_json.ENERGY.ReactivePower }}"
+- platform: mqtt
+  state_topic: "/home/devices/shedfreezer/SENSOR"
+  name: 'Shed Freezer Total Power'
+  unit_of_measurement: 'kwh'
+  value_template: "{{ value_json.ENERGY.Total }}"
+- platform: mqtt
+  state_topic: "/home/devices/shedfreezer/SENSOR"
+  name: 'Shed Freezer Today Power'
+  unit_of_measurement: 'kwh'
+  value_template: "{{ value_json.ENERGY.Today }}"
+- platform: mqtt
+  state_topic: "/home/devices/shedfreezer/SENSOR"
+  name: 'Shed Freezer Power'
+  value_template: "{{ value_json.ENERGY.Power }}"
+  unit_of_measurement: 'W'
+- platform: mqtt
+  state_topic: "/home/devices/shedfreezer/SENSOR"
+  name: 'Shed Freezer Current'
+  unit_of_measurement: 'A'
+  value_template: "{{ value_json.ENERGY.Current }}"
+  
+- platform: mqtt
+  state_topic: "/home/devices/kitchencooker/SENSOR"
+  name: 'Cooker Reactive Power'
+  unit_of_measurement: 'VA'
+  value_template: "{{ value_json.ENERGY.ReactivePower }}"
+- platform: mqtt
+  state_topic: "/home/devices/kitchencooker/SENSOR"
+  name: 'Cooker Total Power'
+  unit_of_measurement: 'kwh'
+  value_template: "{{ value_json.ENERGY.Total }}"
+- platform: mqtt
+  state_topic: "/home/devices/kitchencooker/SENSOR"
+  name: 'Cooker Today Power'
+  unit_of_measurement: 'kwh'
+  value_template: "{{ value_json.ENERGY.Today }}"
+- platform: mqtt
+  state_topic: "/home/devices/kitchencooker/SENSOR"
+  name: 'Cooker Power'
+  value_template: "{{ value_json.ENERGY.Power }}"
+  unit_of_measurement: 'W'
+- platform: mqtt
+  state_topic: "/home/devices/kitchencooker/SENSOR"
+  name: 'Cooker Current'
+  unit_of_measurement: 'A'
+  value_template: "{{ value_json.ENERGY.Current }}"  

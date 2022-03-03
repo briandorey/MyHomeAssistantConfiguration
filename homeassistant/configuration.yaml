@@ -1,11 +1,45 @@
 homeassistant:
   customize: !include customize.yaml
   customize_glob: !include customize_glob.yaml
-  media_dirs:
-    media: /media
 # Configure a default setup of Home Assistant (frontend, api, etc)
 # ssdp:
+panel_custom:
+  - name: panel_networkstorage
+    sidebar_title: Network Storage
+    sidebar_icon: mdi:nas
+    url_path: 'lovelace/network-storage'
+    module_url: /local/example-panel.js
 
+  - name: panel_splarpv
+    sidebar_title: Solar PV
+    sidebar_icon: mdi:solar-panel
+    url_path: 'lovelace/solar-pv'
+    module_url: /local/example-panel.js
+    
+  - name: panel_electricusage
+    sidebar_title: Electric Usage
+    sidebar_icon: mdi:lightning-bolt
+    url_path: 'lovelace/electric-usage'
+    module_url: /local/example-panel.js
+    
+  - name: panel_kitchen
+    sidebar_title: Kitchen
+    sidebar_icon: mdi:washing-machine
+    url_path: 'lovelace/kitchen'
+    module_url: /local/example-panel.js  
+    
+  - name: panel_loft
+    sidebar_title: Loft
+    sidebar_icon: mdi:home-roof
+    url_path: 'lovelace/loft-power'
+    module_url: /local/example-panel.js  
+    
+  - name: panel_roomtemps
+    sidebar_title: Room Sensors
+    sidebar_icon: mdi:home-thermometer
+    url_path: 'lovelace/rooms'
+    module_url: /local/example-panel.js      
+    
 frontend:
   themes: 
     cold:
@@ -199,6 +233,10 @@ recorder:
       - sensor.washing_machine_power
       - sensor.washing_machine_today_power
       - sensor.washing_machine_total_power
+      - sensor.shed_freezer_current
+      - sensor.shed_freezer_power
+      - sensor.shed_freezer_today_power
+      - sensor.shed_freezer_total_power
       - utility_meter.energy_electric_total_usage_daily
       - utility_meter.energy_electric_total_usage_hourly
       - utility_meter.energy_electric_total_usage_monthly
@@ -239,6 +277,16 @@ recorder:
       - sensor.trv_roof_position
       - binary_sensor.trv_roof_battery_low
       - sensor.gastocubicmeter_cost
+      - sensor.mainsvssolarpvinput
+      - sensor.main_shedfreezer_energy
+      - sensor.shed_freezer_today_power
+      - sensor.shed_freezer_total_power
+      - sensor.shed_freezer_power
+      - sensor.main_cooker_energy
+      - sensor.cooker_total_power
+      - sensor.cooker_today_power
+      - sensor.cooker_power
+      - sensor.cooker_current
       
 apcupsd:
   host: !secret apcupsd

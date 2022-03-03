@@ -540,13 +540,19 @@
                         },
                         {
                             "type": "sensor",
-                            "entity": "sensor.solarpv_panel_amps",
+                            "entity": "sensor.mainsvssolarpvinput",
                             "graph": "line",
                             "hours_to_show": 48
                         },
                         {
                             "type": "sensor",
                             "entity": "sensor.solarpv_panel_volts",
+                            "graph": "line",
+                            "hours_to_show": 48
+                        },
+                        {
+                            "type": "sensor",
+                            "entity": "sensor.solarpv_panel_amps",
                             "graph": "line",
                             "hours_to_show": 48
                         },
@@ -639,6 +645,20 @@
                                     "line_width": 2,
                                     "line_color": "green",
                                     "icon": "mdi:solar-panel"
+                                },
+                                {
+                                    "type": "custom:mini-graph-card",
+                                    "entities": [
+                                        {
+                                            "entity": "sensor.mainsvssolarpvinput"
+                                        }
+                                    ],
+                                    "name": "Mains - Solar PV Watts",
+                                    "hours_to_show": 24,
+                                    "points_per_hour": 60,
+                                    "line_width": 2,
+                                    "line_color": "blue",
+                                    "icon": "mdi:solar-panel"
                                 }
                             ]
                         },
@@ -679,8 +699,18 @@
                                             "icon": "mdi:washing-machine"
                                         },
                                         {
+                                            "entity": "sensor.cooker_power",
+                                            "name": "Cooker",
+                                            "icon": "mdi:stove"
+                                        },
+                                        {
                                             "entity": "sensor.kitchen_fridge_power",
                                             "name": "Kitchen Fridge Freezer",
+                                            "icon": "mdi:fridge"
+                                        },
+                                        {
+                                            "entity": "sensor.shed_freezer_power",
+                                            "name": "Shed Freezer",
                                             "icon": "mdi:fridge"
                                         },
                                         {
@@ -792,6 +822,42 @@
                                             ]
                                         },
                                         {
+                                            "entity": "sensor.tumble_dryer_today_power",
+                                            "type": "custom:multiple-entity-row",
+                                            "name": "Tumble Dryer",
+                                            "icon": "mdi:washing-machine",
+                                            "show_state": false,
+                                            "secondary_info": "last-changed",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.tumble_dryer_today_power",
+                                                    "name": "Today"
+                                                },
+                                                {
+                                                    "entity": "sensor.tumble_dryer_total_power",
+                                                    "name": "Total"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "entity": "sensor.cooker_today_power",
+                                            "type": "custom:multiple-entity-row",
+                                            "name": "Cooker",
+                                            "icon": "mdi:stove",
+                                            "show_state": false,
+                                            "secondary_info": "last-changed",
+                                            "entities": [
+                                                {
+                                                    "entity": "sensor.cooker_today_power",
+                                                    "name": "Today"
+                                                },
+                                                {
+                                                    "entity": "sensor.cooker_total_power",
+                                                    "name": "Total"
+                                                }
+                                            ]
+                                        },
+                                        {
                                             "entity": "sensor.kitchen_fridge_today_power",
                                             "type": "custom:multiple-entity-row",
                                             "name": "Kitchen Fridge Freezer",
@@ -810,19 +876,19 @@
                                             ]
                                         },
                                         {
-                                            "entity": "sensor.tumble_dryer_today_power",
+                                            "entity": "sensor.shed_freezer_total_power",
                                             "type": "custom:multiple-entity-row",
-                                            "name": "Tumble Dryer",
-                                            "icon": "mdi:washing-machine",
+                                            "name": "Shed Freezer",
+                                            "icon": "mdi:fridge",
                                             "show_state": false,
                                             "secondary_info": "last-changed",
                                             "entities": [
                                                 {
-                                                    "entity": "sensor.tumble_dryer_today_power",
+                                                    "entity": "sensor.shed_freezer_today_power",
                                                     "name": "Today"
                                                 },
                                                 {
-                                                    "entity": "sensor.tumble_dryer_total_power",
+                                                    "entity": "sensor.shed_freezer_total_power",
                                                     "name": "Total"
                                                 }
                                             ]
@@ -1025,19 +1091,19 @@
                                             "type": "entities",
                                             "entities": [
                                                 {
-                                                    "entity": "sensor.diskstation_volume_1_average_disk_temp",
+                                                    "entity": "sensor.diskstation_average_disk_temp",
                                                     "name": "Average Disk Temp"
                                                 },
                                                 {
-                                                    "entity": "sensor.diskstation_volume_1_status",
+                                                    "entity": "sensor.diskstation_status",
                                                     "name": "Volume Status"
                                                 },
                                                 {
-                                                    "entity": "sensor.diskstation_volume_1_used_space",
+                                                    "entity": "sensor.diskstation_used_space",
                                                     "name": "Volume Used Space"
                                                 },
                                                 {
-                                                    "entity": "sensor.diskstation_volume_1_volume_used",
+                                                    "entity": "sensor.diskstation_volume_used",
                                                     "name": "Volume Used"
                                                 }
                                             ],
@@ -1051,31 +1117,16 @@
                                             "type": "entities",
                                             "entities": [
                                                 {
-                                                    "entity": "sensor.ups_battery_runtime"
-                                                },
-                                                {
-                                                    "entity": "sensor.ups_battery_temperature"
-                                                },
-                                                {
-                                                    "entity": "sensor.ups_battery_voltage"
-                                                },
-                                                {
                                                     "entity": "sensor.ups_input_voltage_2"
                                                 },
                                                 {
                                                     "entity": "sensor.ups_load_2"
                                                 },
                                                 {
-                                                    "entity": "sensor.ups_output_frequency"
-                                                },
-                                                {
                                                     "entity": "sensor.ups_output_voltage"
                                                 },
                                                 {
                                                     "entity": "sensor.nasupspowerwatts"
-                                                },
-                                                {
-                                                    "entity": "sensor.ups_low_battery_runtime"
                                                 },
                                                 {
                                                     "entity": "sensor.ups_status_2"
@@ -1099,105 +1150,105 @@
                                             "type": "entities",
                                             "entities": [
                                                 {
-                                                    "entity": "sensor.diskstation_drive_1_temperature",
+                                                    "entity": "sensor.diskstation_temperature",
                                                     "type": "custom:multiple-entity-row",
                                                     "name": "Drive 1",
                                                     "show_state": true,
                                                     "secondary_info": "last-changed",
                                                     "entities": [
                                                         {
-                                                            "entity": "sensor.diskstation_drive_1_status",
+                                                            "entity": "sensor.diskstation_status_2",
                                                             "name": "Status"
                                                         }
                                                     ]
                                                 },
                                                 {
-                                                    "entity": "sensor.diskstation_drive_2_temperature",
+                                                    "entity": "sensor.diskstation_temperature",
                                                     "type": "custom:multiple-entity-row",
                                                     "name": "Drive 2",
                                                     "show_state": true,
                                                     "secondary_info": "last-changed",
                                                     "entities": [
                                                         {
-                                                            "entity": "sensor.diskstation_drive_2_status",
+                                                            "entity": "sensor.diskstation_status_3",
                                                             "name": "Status"
                                                         }
                                                     ]
                                                 },
                                                 {
-                                                    "entity": "sensor.diskstation_drive_3_temperature",
+                                                    "entity": "sensor.diskstation_temperature_2",
                                                     "type": "custom:multiple-entity-row",
                                                     "name": "Drive 3",
                                                     "show_state": true,
                                                     "secondary_info": "last-changed",
                                                     "entities": [
                                                         {
-                                                            "entity": "sensor.diskstation_drive_3_status",
+                                                            "entity": "sensor.diskstation_status_4",
                                                             "name": "Status"
                                                         }
                                                     ]
                                                 },
                                                 {
-                                                    "entity": "sensor.diskstation_drive_4_temperature",
+                                                    "entity": "sensor.diskstation_temperature_3",
                                                     "type": "custom:multiple-entity-row",
                                                     "name": "Drive 4",
                                                     "show_state": true,
                                                     "secondary_info": "last-changed",
                                                     "entities": [
                                                         {
-                                                            "entity": "sensor.diskstation_drive_4_status",
+                                                            "entity": "sensor.diskstation_status_5",
                                                             "name": "Status"
                                                         }
                                                     ]
                                                 },
                                                 {
-                                                    "entity": "sensor.diskstation_drive_5_temperature",
+                                                    "entity": "sensor.diskstation_temperature_4",
                                                     "type": "custom:multiple-entity-row",
                                                     "name": "Drive 5",
                                                     "show_state": true,
                                                     "secondary_info": "last-changed",
                                                     "entities": [
                                                         {
-                                                            "entity": "sensor.diskstation_drive_5_status",
+                                                            "entity": "sensor.diskstation_status_6",
                                                             "name": "Status"
                                                         }
                                                     ]
                                                 },
                                                 {
-                                                    "entity": "sensor.diskstation_drive_6_temperature",
+                                                    "entity": "sensor.diskstation_temperature_6",
                                                     "type": "custom:multiple-entity-row",
                                                     "name": "Drive 6",
                                                     "show_state": true,
                                                     "secondary_info": "last-changed",
                                                     "entities": [
                                                         {
-                                                            "entity": "sensor.diskstation_drive_6_status",
+                                                            "entity": "sensor.diskstation_status_7",
                                                             "name": "Status"
                                                         }
                                                     ]
                                                 },
                                                 {
-                                                    "entity": "sensor.diskstation_drive_7_temperature",
+                                                    "entity": "sensor.diskstation_temperature_6",
                                                     "type": "custom:multiple-entity-row",
                                                     "name": "Drive 7",
                                                     "show_state": true,
                                                     "secondary_info": "last-changed",
                                                     "entities": [
                                                         {
-                                                            "entity": "sensor.diskstation_drive_7_status",
+                                                            "entity": "sensor.diskstation_status_8",
                                                             "name": "Status"
                                                         }
                                                     ]
                                                 },
                                                 {
-                                                    "entity": "sensor.diskstation_drive_8_temperature",
+                                                    "entity": "sensor.diskstation_temperature_8",
                                                     "type": "custom:multiple-entity-row",
                                                     "name": "Drive 8",
                                                     "show_state": true,
                                                     "secondary_info": "last-changed",
                                                     "entities": [
                                                         {
-                                                            "entity": "sensor.diskstation_drive_8_status",
+                                                            "entity": "sensor.diskstation_status_9",
                                                             "name": "Status"
                                                         }
                                                     ]
